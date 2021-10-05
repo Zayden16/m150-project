@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;400;700&display=swap');
+
+
+html, body{
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto Slab', serif;
+  color: white;
+}
+
+
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}

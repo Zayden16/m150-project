@@ -1,0 +1,27 @@
+<div class="flex container">
+
+  <div class="background flex align-items-center justify-content-center">
+    <img class="hero-logo" src="/assets/logo.svg">
+    <ng-lottie class="lottie" height="520px" width="520px" [options]="options" (animationCreated)="animationCreated($event)">    </ng-lottie>
+  </div>
+
+  <div class="flex-auto p-8 highlight">
+    <div>
+      <h1>Welcome to Project Fiscus</h1>
+      <p>Please Login</p>
+    </div>
+    <div class="flex flex-column">
+      <span class="p-input-icon-left mt-2 cw">
+        <i class="pi pi-user"></i>
+        <input type="text" pInputText class="p-inputtext-lg" placeholder="Username">
+      </span>
+      <span class="p-input-icon-left mt-2 cw">
+        <i class="pi pi-eye-slash"></i>
+        <input type="password" pInputText class="p-inputtext-lg" placeholder="Password">
+      </span>
+      <button pButton class="p-button-lg p-button-primary mt-2 cw" type="button" label="Login"></button>
+    </div>
+  </div>
+</div>
+
+

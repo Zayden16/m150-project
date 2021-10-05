@@ -1,0 +1,24 @@
+.container{
+  overflow: hidden;
+}
+.background{
+  background-color: #23272a;
+  height: 100vh;
+  width: 100%;
+}
+.highlight{
+  background-color: #2c2f33;
+}
+.cw{
+  width: 285px;
+}
+.hero-logo{
+  height: 250px;
+  z-index: 2;
+  box-shadow: black;
+  animation: float 6s ease-in-out infinite;
+}
+.lottie{
+  position: absolute;
+  z-index: 1;
+}
