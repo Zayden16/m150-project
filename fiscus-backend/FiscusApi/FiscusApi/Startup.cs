@@ -27,7 +27,7 @@ namespace FiscusApi
             services.AddControllers();
             services.AddCors();
             services.AddDbContext<SqlContext>(options => options.UseNpgsql(Configuration["ConnectionString"]));
-            
+
             services.AddScoped<IArticleRepository, ArticleRepository>();
             services.AddScoped<IArticlePositionRepository, ArticlePositionRepository>();
             services.AddScoped<IArticleUnitRepository, ArticleUnitRepository>();
