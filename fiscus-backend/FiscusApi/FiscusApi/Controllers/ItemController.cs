@@ -9,40 +9,40 @@ namespace FiscusApi.Controllers
 {
     [AuthorizationRequired]
     [Route("api/[controller]")]
-    public class DocumentController : ControllerBase
+    public class ItemController : ControllerBase
     {
-        private readonly IDocumentRepository _dataAccessProvider;
+        private readonly IItemRepository _dataAccessProvider;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DocumentController"/> class.
+        /// Initializes a new instance of the <see cref="ItemController"/> class.
         /// </summary>
         /// <param name="dataAccessProvider">The data access provider.</param>
-        public DocumentController(IDocumentRepository dataAccessProvider)
+        public ItemController(IItemRepository dataAccessProvider)
         {
             _dataAccessProvider = dataAccessProvider;
         }
 
         [HttpGet]
-        public IEnumerable<Document> Get()
+        public IEnumerable<Item> Get()
         {
-            return _dataAccessProvider.GetDocumentRecords();
+            return _dataAccessProvider.GetItemRecords();
         }
 
         [HttpGet("{id}")]
-        public Document Details(int id)
+        public Item Details(int id)
         {
-            return _dataAccessProvider.GetDocumentSingleRecord(id);
+            return _dataAccessProvider.GetItemSingleRecord(id);
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Document patient)
+        public IActionResult Create([FromBody] Item patient)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                _dataAccessProvider.AddDocumentRecord(patient);
+                _dataAccessProvider.AddItemRecord(patient);
                 return Ok();
             }
             catch (Exception exception)
@@ -53,14 +53,14 @@ namespace FiscusApi.Controllers
         }
 
         [HttpPut]
-        public IActionResult Edit([FromBody] Document patient)
+        public IActionResult Edit([FromBody] Item patient)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                _dataAccessProvider.UpdateDocumentRecord(patient);
+                _dataAccessProvider.UpdateItemRecord(patient);
                 return Ok();
             }
             catch (Exception exception)
@@ -75,12 +75,12 @@ namespace FiscusApi.Controllers
         {
             try
             {
-                var data = _dataAccessProvider.GetDocumentSingleRecord(id);
+                var data = _dataAccessProvider.GetItemSingleRecord(id);
 
                 if (data == null)
-                    return NotFound();
+                    return NotFound($"Entity with {id} not found.");
 
-                _dataAccessProvider.DeleteDocumentRecord(id);
+                _dataAccessProvider.DeleteItemRecord(id);
                 return Ok();
             }
             catch (Exception exception)

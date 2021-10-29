@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System.Collections.Generic;
 using FiscusApi.DataAccess;
+using FiscusApi.Helpers;
 using FiscusApi.Repositories;
 using FiscusApi.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -28,14 +29,7 @@ namespace FiscusApi
             services.AddCors();
             services.AddDbContext<SqlContext>(options => options.UseNpgsql(Configuration["ConnectionString"]));
 
-            services.AddScoped<IArticleRepository, ArticleRepository>();
-            services.AddScoped<IArticlePositionRepository, ArticlePositionRepository>();
-            services.AddScoped<IArticleUnitRepository, ArticleUnitRepository>();
-            services.AddScoped<ICustomerRepository, CustomerRepository>();
-            services.AddScoped<IDocumentRepository, DocumentRepository>();
-            services.AddScoped<IDocumentStatusRepository, DocumentStatusRepository>();
-            services.AddScoped<IPlzRepository, PlzRepository>();
-            services.AddScoped<ITaxRateRepository, TaxRateRepository>();
+            services.AddScoped<IItemRepository, ItemRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddSwaggerGen(c =>
@@ -85,13 +79,13 @@ namespace FiscusApi
 
             app.UseAuthorization();
 
-            //app.UseCors(x => x
-            //    .AllowAnyMethod()
-            //    .AllowAnyHeader()
-            //    .SetIsOriginAllowed(origin => true) // allow any origin
-            //    .AllowCredentials()); // allow credentials
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowCredentials()); // allow credentials
 
-            //app.UseMiddleware<JwtMiddleware>();
+            app.UseMiddleware<JwtMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
