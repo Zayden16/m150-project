@@ -8,11 +8,15 @@ import {LoginComponent} from './Components/login/login.component';
 import {CardModule} from "primeng/card";
 import {ButtonModule} from "primeng/button";
 import {InputTextModule} from "primeng/inputtext";
+import {ChartModule} from 'primeng/chart';
 import {PanelMenuModule} from 'primeng/panelmenu';
+
 
 import {LottieModule} from "ngx-lottie";
 import player from 'lottie-web';
 import { PanelmenuComponent } from './Components/panelmenu/panelmenu.component';
+
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
 
 export function playerFactory() {
   return player;
@@ -22,6 +26,7 @@ export function playerFactory() {
     AppComponent,
     LoginComponent,
     PanelmenuComponent
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +35,8 @@ export function playerFactory() {
     CardModule,
     ButtonModule,
     InputTextModule,
+    LottieModule.forRoot({ player: playerFactory }),
+    ChartModule
     PanelMenuModule,
     LottieModule.forRoot({ player: playerFactory })
   ],
