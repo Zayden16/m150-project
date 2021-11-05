@@ -7,35 +7,36 @@ using FiscusApi.Repositories.Interface;
 
 namespace FiscusApi.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class ShoppingListRepository : IShoppingListRepository
     {
         private readonly SqlContext _context;
 
-        public UserRepository(SqlContext context)
+        public ShoppingListRepository(SqlContext context)
         {
             _context = context;
         }
 
-        public List<User> GetUsers()
+        public List<ShoppingList> GetShoppingLists()
         {
-            return _context.User.ToList();
+            return _context.ShoppingList.ToList();
         }
 
-        public User GetUser(int id)
+        public ShoppingList GetShoppingList(int id)
         {
-            return _context.User.FirstOrDefault(t => t.UserId == id);
+            return _context.ShoppingList.FirstOrDefault(t => t.ShoppingListId == id);
         }
 
-        public void AddUser(User user)
+        public void AddShoppingList(ShoppingList item)
         {
             using var transaction = _context.Database.BeginTransaction();
             try
             {
-                var entity = _context.User.FirstOrDefault(x => x.UserId == user.UserId);
+                var entity = _context.ShoppingList.FirstOrDefault(x => x.ShoppingListId == item.ShoppingListId);
+
                 if (entity != null)
-                    throw new Exception($"Entity with id: '{user.UserId}' already exists.");
+                    throw new Exception($"Entity with id: '{item.ShoppingListId}' already exists.");
 
-                _context.User.Add(user);
+                _context.ShoppingList.Add(item);
                 _context.SaveChanges();
                 transaction.Commit();
             }
@@ -45,12 +46,12 @@ namespace FiscusApi.Repositories
             }
         }
 
-        public void UpdateUser(User user)
+        public void UpdateShoppingList(ShoppingList item)
         {
             using var transaction = _context.Database.BeginTransaction();
             try
             {
-                _context.User.Update(user);
+                _context.ShoppingList.Update(item);
                 _context.SaveChanges();
                 transaction.Commit();
             }
@@ -60,16 +61,17 @@ namespace FiscusApi.Repositories
             }
         }
 
-        public void DeleteUser(int id)
+        public void DeleteShoppingList(int id)
         {
             using var transaction = _context.Database.BeginTransaction();
             try
             {
-                var entity = _context.User.FirstOrDefault(u => u.UserId == id);
+                var entity = _context.ShoppingList.FirstOrDefault(t => t.ShoppingListId == id);
 
-                if (entity != null) 
-                    _context.User.Remove(entity);
+                if (entity == null)
+                    throw new Exception($"Entity with {id} not found.");
 
+                _context.ShoppingList.Remove(entity);
                 _context.SaveChanges();
                 transaction.Commit();
             }

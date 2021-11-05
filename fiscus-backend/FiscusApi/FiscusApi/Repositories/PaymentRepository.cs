@@ -7,35 +7,36 @@ using FiscusApi.Repositories.Interface;
 
 namespace FiscusApi.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class PaymentRepository : IPaymentRepository
     {
         private readonly SqlContext _context;
 
-        public UserRepository(SqlContext context)
+        public PaymentRepository(SqlContext context)
         {
             _context = context;
         }
 
-        public List<User> GetUsers()
+        public List<Payment> GetPayments()
         {
-            return _context.User.ToList();
+            return _context.Payment.ToList();
         }
 
-        public User GetUser(int id)
+        public Payment GetPayment(int id)
         {
-            return _context.User.FirstOrDefault(t => t.UserId == id);
+            return _context.Payment.FirstOrDefault(t => t.PaymentId == id);
         }
 
-        public void AddUser(User user)
+        public void AddPayment(Payment payment)
         {
             using var transaction = _context.Database.BeginTransaction();
             try
             {
-                var entity = _context.User.FirstOrDefault(x => x.UserId == user.UserId);
+                var entity = _context.Payment.FirstOrDefault(x => x.PaymentId == payment.PaymentId);
+
                 if (entity != null)
-                    throw new Exception($"Entity with id: '{user.UserId}' already exists.");
+                    throw new Exception($"Entity with id: '{payment.PaymentId}' already exists.");
 
-                _context.User.Add(user);
+                _context.Payment.Add(payment);
                 _context.SaveChanges();
                 transaction.Commit();
             }
@@ -45,12 +46,12 @@ namespace FiscusApi.Repositories
             }
         }
 
-        public void UpdateUser(User user)
+        public void UpdatePayment(Payment payment)
         {
             using var transaction = _context.Database.BeginTransaction();
             try
             {
-                _context.User.Update(user);
+                _context.Payment.Update(payment);
                 _context.SaveChanges();
                 transaction.Commit();
             }
@@ -60,16 +61,17 @@ namespace FiscusApi.Repositories
             }
         }
 
-        public void DeleteUser(int id)
+        public void DeletePayment(int id)
         {
             using var transaction = _context.Database.BeginTransaction();
             try
             {
-                var entity = _context.User.FirstOrDefault(u => u.UserId == id);
+                var entity = _context.Payment.FirstOrDefault(t => t.PaymentId == id);
 
-                if (entity != null) 
-                    _context.User.Remove(entity);
+                if (entity == null)
+                    throw new Exception($"Entity with {id} not found.");
 
+                _context.Payment.Remove(entity);
                 _context.SaveChanges();
                 transaction.Commit();
             }

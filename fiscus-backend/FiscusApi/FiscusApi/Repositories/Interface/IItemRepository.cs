@@ -6,34 +6,34 @@ namespace FiscusApi.Repositories.Interface
     public interface IItemRepository  
     {
         /// <summary>
-        /// Adds the item record.
+        /// Gets the items.
         /// </summary>
-        /// <param name="item">The item.</param>
-        void AddItemRecord(Item item);
+        /// <returns>The items.</returns>
+        List<Item> GetItems();  
 
         /// <summary>
-        /// Updates the item record.
-        /// </summary>
-        /// <param name="item">The item.</param>
-        void UpdateItemRecord(Item item);
-
-        /// <summary>
-        /// Deletes the item record.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        void DeleteItemRecord(int id);
-
-        /// <summary>
-        /// Gets the item single record.
+        /// Gets the item.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>The item.</returns>
-        Item GetItemSingleRecord(int id);
+        Item GetItem(int id);
 
         /// <summary>
-        /// Gets the item records.
+        /// Adds the item.
         /// </summary>
-        /// <returns>The items.</returns>
-        List<Item> GetItemRecords();  
+        /// <param name="item">The item.</param>
+        void AddItem(Item item);
+
+        /// <summary>
+        /// Updates the item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        void UpdateItem(Item item);
+
+        /// <summary>
+        /// Deletes the item.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        void DeleteItem(int id);
     }  
 }

@@ -16,8 +16,18 @@ namespace FiscusApi.Repositories
             _context = context;
         }
 
+        public List<Item> GetItems()
+        {
+            return _context.Item.ToList();
+        }
 
-        public void AddItemRecord(Item item)
+        public Item GetItem(int id)
+        {
+            return _context.Item.FirstOrDefault(t => t.ItemId == id);
+        }
+
+
+        public void AddItem(Item item)
         {
             using var transaction = _context.Database.BeginTransaction();
             try
@@ -37,7 +47,7 @@ namespace FiscusApi.Repositories
             }
         }
 
-        public void UpdateItemRecord(Item item)
+        public void UpdateItem(Item item)
         {
             using var transaction = _context.Database.BeginTransaction();
             try
@@ -52,7 +62,7 @@ namespace FiscusApi.Repositories
             }
         }
 
-        public void DeleteItemRecord(int id)
+        public void DeleteItem(int id)
         {
             using var transaction = _context.Database.BeginTransaction();
             try
@@ -70,16 +80,6 @@ namespace FiscusApi.Repositories
             {
                 throw new Exception(e.Message, e);
             }
-        }
-
-        public Item GetItemSingleRecord(int id)
-        {
-            return _context.Item.FirstOrDefault(t => t.ItemId == id);
-        }
-
-        public List<Item> GetItemRecords()
-        {
-            return _context.Item.ToList();
         }
     }
 }

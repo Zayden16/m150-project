@@ -6,34 +6,34 @@ namespace FiscusApi.Repositories.Interface
     public interface IUserRepository  
     {
         /// <summary>
-        /// Adds the user record.
+        /// Gets the users.
         /// </summary>
-        /// <param name="user">The user.</param>
-        void AddUserRecord(User user);
+        /// <returns>The users.</returns>
+        List<User> GetUsers();
 
         /// <summary>
-        /// Updates the user record.
-        /// </summary>
-        /// <param name="user">The user.</param>
-        void UpdateUserRecord(User user);
-
-        /// <summary>
-        /// Gets the user single record.
+        /// Gets the user.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>The user.</returns>
-        User GetUserSingleRecord(int id);
+        User GetUser(int id);
 
         /// <summary>
-        /// Gets the user records.
+        /// Adds the user.
         /// </summary>
-        /// <returns>The users.</returns>
-        List<User> GetUserRecords();
-        
+        /// <param name="user">The user.</param>
+        void AddUser(User user);
+
         /// <summary>
-        /// Deletes a User record.
+        /// Updates the user.
+        /// </summary>
+        /// <param name="user">The user.</param>
+        void UpdateUser(User user);
+
+        /// <summary>
+        /// Deletes a User.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        void DeleteUserRecord(int id);
+        void DeleteUser(int id);
     }
 }

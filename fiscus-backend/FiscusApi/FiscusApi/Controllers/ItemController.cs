@@ -25,13 +25,13 @@ namespace FiscusApi.Controllers
         [HttpGet]
         public IEnumerable<Item> Get()
         {
-            return _dataAccessProvider.GetItemRecords();
+            return _dataAccessProvider.GetItems();
         }
 
         [HttpGet("{id}")]
         public Item Details(int id)
         {
-            return _dataAccessProvider.GetItemSingleRecord(id);
+            return _dataAccessProvider.GetItem(id);
         }
 
         [HttpPost]
@@ -42,7 +42,7 @@ namespace FiscusApi.Controllers
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                _dataAccessProvider.AddItemRecord(patient);
+                _dataAccessProvider.AddItem(patient);
                 return Ok();
             }
             catch (Exception exception)
@@ -60,7 +60,7 @@ namespace FiscusApi.Controllers
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                _dataAccessProvider.UpdateItemRecord(patient);
+                _dataAccessProvider.UpdateItem(patient);
                 return Ok();
             }
             catch (Exception exception)
@@ -75,12 +75,12 @@ namespace FiscusApi.Controllers
         {
             try
             {
-                var data = _dataAccessProvider.GetItemSingleRecord(id);
+                var data = _dataAccessProvider.GetItem(id);
 
                 if (data == null)
                     return NotFound($"Entity with {id} not found.");
 
-                _dataAccessProvider.DeleteItemRecord(id);
+                _dataAccessProvider.DeleteItem(id);
                 return Ok();
             }
             catch (Exception exception)

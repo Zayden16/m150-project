@@ -7,35 +7,36 @@ using FiscusApi.Repositories.Interface;
 
 namespace FiscusApi.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class GroupRepository : IGroupRepository
     {
         private readonly SqlContext _context;
 
-        public UserRepository(SqlContext context)
+        public GroupRepository(SqlContext context)
         {
             _context = context;
         }
 
-        public List<User> GetUsers()
+        public List<Group> GetGroups()
         {
-            return _context.User.ToList();
+            return _context.Group.ToList();
         }
 
-        public User GetUser(int id)
+        public Group GetGroup(int id)
         {
-            return _context.User.FirstOrDefault(t => t.UserId == id);
+            return _context.Group.FirstOrDefault(t => t.GroupId == id);
         }
 
-        public void AddUser(User user)
+        public void AddGroup(Group group)
         {
             using var transaction = _context.Database.BeginTransaction();
             try
             {
-                var entity = _context.User.FirstOrDefault(x => x.UserId == user.UserId);
+                var entity = _context.Group.FirstOrDefault(x => x.GroupId == group.GroupId);
+
                 if (entity != null)
-                    throw new Exception($"Entity with id: '{user.UserId}' already exists.");
+                    throw new Exception($"Entity with id: '{group.GroupId}' already exists.");
 
-                _context.User.Add(user);
+                _context.Group.Add(group);
                 _context.SaveChanges();
                 transaction.Commit();
             }
@@ -45,12 +46,12 @@ namespace FiscusApi.Repositories
             }
         }
 
-        public void UpdateUser(User user)
+        public void UpdateGroup(Group group)
         {
             using var transaction = _context.Database.BeginTransaction();
             try
             {
-                _context.User.Update(user);
+                _context.Group.Update(group);
                 _context.SaveChanges();
                 transaction.Commit();
             }
@@ -60,16 +61,17 @@ namespace FiscusApi.Repositories
             }
         }
 
-        public void DeleteUser(int id)
+        public void DeleteGroup(int id)
         {
             using var transaction = _context.Database.BeginTransaction();
             try
             {
-                var entity = _context.User.FirstOrDefault(u => u.UserId == id);
+                var entity = _context.Group.FirstOrDefault(t => t.GroupId == id);
 
-                if (entity != null) 
-                    _context.User.Remove(entity);
+                if (entity == null)
+                    throw new Exception($"Entity with {id} not found.");
 
+                _context.Group.Remove(entity);
                 _context.SaveChanges();
                 transaction.Commit();
             }

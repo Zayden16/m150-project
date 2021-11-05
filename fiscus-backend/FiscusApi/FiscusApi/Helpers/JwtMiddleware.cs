@@ -47,7 +47,7 @@ namespace FiscusApi.Helpers
 
             var jwtToken = (JwtSecurityToken)validatedToken;
             var userId = int.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
-            context.Items["User"] = userRepository.GetUserSingleRecord(userId);
+            context.Items["User"] = userRepository.GetUser(userId);
         }
     }
 }

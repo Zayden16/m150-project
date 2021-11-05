@@ -9,40 +9,40 @@ namespace FiscusApi.Controllers
 {
     [AuthorizationRequired]
     [Route("api/[controller]")]
-    public class UserController : ControllerBase
+    public class CategoryController : ControllerBase
     {
-        private readonly IUserRepository _dataAccessProvider;
+        private readonly ICategoryRepository _dataAccessProvider;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UserController"/> class.
+        /// Initializes a new instance of the <see cref="CategoryController"/> class.
         /// </summary>
         /// <param name="dataAccessProvider">The data access provider.</param>
-        public UserController(IUserRepository dataAccessProvider)
+        public CategoryController(ICategoryRepository dataAccessProvider)
         {
             _dataAccessProvider = dataAccessProvider;
         }
 
         [HttpGet]
-        public IEnumerable<User> Get()
+        public IEnumerable<Category> Get()
         {
-            return _dataAccessProvider.GetUsers();
+            return _dataAccessProvider.GetCategories();
         }
 
         [HttpGet("{id}")]
-        public User Details(int id)
+        public Category Details(int id)
         {
-            return _dataAccessProvider.GetUser(id);
+            return _dataAccessProvider.GetCategory(id);
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] User patient)
+        public IActionResult Create([FromBody] Category patient)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                _dataAccessProvider.AddUser(patient);
+                _dataAccessProvider.AddCategory(patient);
                 return Ok();
             }
             catch (Exception exception)
@@ -53,14 +53,14 @@ namespace FiscusApi.Controllers
         }
 
         [HttpPut]
-        public IActionResult Edit([FromBody] User patient)
+        public IActionResult Edit([FromBody] Category patient)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                _dataAccessProvider.UpdateUser(patient);
+                _dataAccessProvider.UpdateCategory(patient);
                 return Ok();
             }
             catch (Exception exception)
@@ -69,17 +69,18 @@ namespace FiscusApi.Controllers
                 return BadRequest(message);
             }
         }
+
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             try
             {
-                var data = _dataAccessProvider.GetUser(id);
+                var data = _dataAccessProvider.GetCategory(id);
 
                 if (data == null)
-                    return NotFound();
+                    return NotFound($"Entity with {id} not found.");
 
-                _dataAccessProvider.DeleteUser(id);
+                _dataAccessProvider.DeleteCategory(id);
                 return Ok();
             }
             catch (Exception exception)
