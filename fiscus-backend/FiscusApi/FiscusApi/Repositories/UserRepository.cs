@@ -21,9 +21,9 @@ namespace FiscusApi.Repositories
             using var transaction = _context.Database.BeginTransaction();
             try
             {
-                var entity = _context.User.FirstOrDefault(x => x.User_Id == user.User_Id);
+                var entity = _context.User.FirstOrDefault(x => x.UserId == user.UserId);
                 if (entity != null)
-                    throw new Exception($"Entity with id: '{user.User_Id}' already exists.");
+                    throw new Exception($"Entity with id: '{user.UserId}' already exists.");
 
                 _context.User.Add(user);
                 _context.SaveChanges();
@@ -52,7 +52,7 @@ namespace FiscusApi.Repositories
 
         public User GetUserSingleRecord(int id)
         {
-            return _context.User.FirstOrDefault(t => t.User_Id == id);
+            return _context.User.FirstOrDefault(t => t.UserId == id);
         }
 
         public List<User> GetUserRecords()
@@ -65,7 +65,7 @@ namespace FiscusApi.Repositories
             using var transaction = _context.Database.BeginTransaction();
             try
             {
-                var entity = _context.User.FirstOrDefault(u => u.User_Id == id);
+                var entity = _context.User.FirstOrDefault(u => u.UserId == id);
                 _context.User.Remove(entity);
                 _context.SaveChanges();
                 transaction.Commit();

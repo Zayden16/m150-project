@@ -7,26 +7,27 @@ using FiscusApi.Repositories.Interface;
 
 namespace FiscusApi.Repositories
 {
-    public class TaxRateRepository : ITaxRateRepository
+    public class ItemRepository : IItemRepository
     {
         private readonly SqlContext _context;
 
-        public TaxRateRepository(SqlContext context)
+        public ItemRepository(SqlContext context)
         {
             _context = context;
         }
 
-        public void AddTaxRateRecord(TaxRate taxRate)
+
+        public void AddItemRecord(Item item)
         {
             using var transaction = _context.Database.BeginTransaction();
             try
             {
-                var entity = _context.TaxRate.FirstOrDefault(x => x.Taxrate_Id == taxRate.Taxrate_Id);
+                var entity = _context.Item.FirstOrDefault(x => x.ItemId == item.ItemId);
 
                 if (entity != null)
-                    throw new Exception($"Entity with id: '{taxRate.Taxrate_Id}' already exists.");
+                    throw new Exception($"Entity with id: '{item.ItemId}' already exists.");
 
-                _context.TaxRate.Add(taxRate);
+                _context.Item.Add(item);
                 _context.SaveChanges();
                 transaction.Commit();
             }
@@ -36,12 +37,12 @@ namespace FiscusApi.Repositories
             }
         }
 
-        public void UpdateTaxRateRecord(TaxRate taxRate)
+        public void UpdateItemRecord(Item item)
         {
             using var transaction = _context.Database.BeginTransaction();
             try
             {
-                _context.TaxRate.Update(taxRate);
+                _context.Item.Update(item);
                 _context.SaveChanges();
                 transaction.Commit();
             }
@@ -51,17 +52,17 @@ namespace FiscusApi.Repositories
             }
         }
 
-        public void DeleteTaxRateRecord(int id)
+        public void DeleteItemRecord(int id)
         {
             using var transaction = _context.Database.BeginTransaction();
             try
             {
-                var entity = _context.TaxRate.FirstOrDefault(t => t.Taxrate_Id == id);
+                var entity = _context.Item.FirstOrDefault(t => t.ItemId == id);
 
                 if (entity == null)
                     throw new Exception($"Entity with {id} not found.");
 
-                _context.TaxRate.Remove(entity);
+                _context.Item.Remove(entity);
                 _context.SaveChanges();
                 transaction.Commit();
             }
@@ -71,15 +72,14 @@ namespace FiscusApi.Repositories
             }
         }
 
-        public TaxRate GetTaxRateSingleRecord(int id)
+        public Item GetItemSingleRecord(int id)
         {
-            return _context.TaxRate.FirstOrDefault(t => t.Taxrate_Id == id);
+            return _context.Item.FirstOrDefault(t => t.ItemId == id);
         }
 
-
-        public List<TaxRate> GetTaxRateRecords()
+        public List<Item> GetItemRecords()
         {
-            return _context.TaxRate.ToList();
+            return _context.Item.ToList();
         }
     }
 }

@@ -40,8 +40,8 @@ namespace FiscusApi.Controllers
         private AuthenticateResponse DoAuth(AuthenticateRequest authReq)
         {
             var user = _users.SingleOrDefault(x =>
-                string.Equals(x.User_DisplayName, authReq.Username, StringComparison.CurrentCultureIgnoreCase)
-                && x.User_Password == authReq.Password);
+                string.Equals(x.Username, authReq.Username, StringComparison.CurrentCultureIgnoreCase)
+                && x.Password == authReq.Password);
             if (user == null) return null;
             var token = GenerateJwtToken(user);
 
@@ -54,7 +54,7 @@ namespace FiscusApi.Controllers
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[] { new Claim("id", user.User_Id.ToString()) }),
+                Subject = new ClaimsIdentity(new[] { new Claim("id", user.UserId.ToString()) }),
                 Expires = DateTime.UtcNow.AddDays(3),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature)
