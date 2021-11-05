@@ -7,7 +7,7 @@ namespace FiscusApi.Models
         public int ItemId { get; set; }
 
         [MaxLength(50)]
-        public string ArticleName { get; set; }
+        public string Name { get; set; }
 
         public int Quantity { get; set; }
 

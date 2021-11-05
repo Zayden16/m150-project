@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace FiscusApi.Models
 {
@@ -11,6 +11,8 @@ namespace FiscusApi.Models
 
         [MaxLength(255)]
         public string Description { get; set; }
+
+        public DateTime Date { get; set; }
 
         public int CategoryId { get; set; }
     }

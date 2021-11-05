@@ -44,6 +44,9 @@ namespace FiscusApi.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("integer");
 
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<string>("Description")
                         .HasMaxLength(255)
                         .HasColumnType("character varying(255)");
@@ -56,31 +59,6 @@ namespace FiscusApi.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Cost");
-                });
-
-            modelBuilder.Entity("FiscusApi.Models.CostUser", b =>
-                {
-                    b.Property<int>("CostUserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<int>("CostId")
-                        .HasColumnType("integer");
-
-                    b.Property<bool>("IsPayee")
-                        .HasColumnType("boolean");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("CostUserId");
-
-                    b.HasIndex("CostId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("CostUser");
                 });
 
             modelBuilder.Entity("FiscusApi.Models.Group", b =>
@@ -110,15 +88,15 @@ namespace FiscusApi.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("ArticleName")
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
-
                     b.Property<int>("CategoryId")
                         .HasColumnType("integer");
 
                     b.Property<bool>("IsPurchased")
                         .HasColumnType("boolean");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
@@ -140,6 +118,27 @@ namespace FiscusApi.Migrations
                     b.ToTable("Item");
                 });
 
+            modelBuilder.Entity("FiscusApi.Models.Payment", b =>
+                {
+                    b.Property<int>("CostId")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("IsPayee")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("PaymentId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasIndex("CostId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Payment");
+                });
+
             modelBuilder.Entity("FiscusApi.Models.ShoppingList", b =>
                 {
                     b.Property<int>("ShoppingListId")
@@ -150,21 +149,9 @@ namespace FiscusApi.Migrations
                     b.Property<int>("GroupId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
-
-                    b.Property<DateTime>("ShoppingDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
                     b.HasKey("ShoppingListId");
 
                     b.HasIndex("GroupId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("ShoppingList");
                 });
@@ -207,21 +194,6 @@ namespace FiscusApi.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("FiscusApi.Models.CostUser", b =>
-                {
-                    b.HasOne("FiscusApi.Models.Cost", null)
-                        .WithMany()
-                        .HasForeignKey("CostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FiscusApi.Models.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("FiscusApi.Models.Item", b =>
                 {
                     b.HasOne("FiscusApi.Models.Category", null)
@@ -243,17 +215,26 @@ namespace FiscusApi.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("FiscusApi.Models.ShoppingList", b =>
+            modelBuilder.Entity("FiscusApi.Models.Payment", b =>
                 {
-                    b.HasOne("FiscusApi.Models.Group", null)
+                    b.HasOne("FiscusApi.Models.Cost", null)
                         .WithMany()
-                        .HasForeignKey("GroupId")
+                        .HasForeignKey("CostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("FiscusApi.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("FiscusApi.Models.ShoppingList", b =>
+                {
+                    b.HasOne("FiscusApi.Models.Group", null)
+                        .WithMany()
+                        .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

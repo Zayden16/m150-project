@@ -15,7 +15,7 @@ namespace FiscusApi.DataAccess
 
         public DbSet<Cost> Cost { get; set; }
 
-        public DbSet<CostUser> CostUser { get; set; }
+        public DbSet<Payment> Payment { get; set; }
 
         public DbSet<Group> Group { get; set; }
 
@@ -51,19 +51,20 @@ namespace FiscusApi.DataAccess
                 .WithMany()
                 .HasForeignKey(x => x.CategoryId);
 
-            builder.Entity<CostUser>()
-                .HasKey(x => x.CostUserId);
+            builder.Entity<Payment>()
+                .HasNoKey();
 
-            builder.Entity<CostUser>()
+            builder.Entity<Payment>()
                 .HasOne<User>()
                 .WithMany()
                 .HasForeignKey(x => x.UserId);
 
-            builder.Entity<CostUser>()
+            builder.Entity<Payment>()
                 .HasOne<Cost>()
                 .WithMany()
                 .HasForeignKey(x => x.CostId);
 
+           
             builder.Entity<ShoppingList>()
                 .HasKey(x => x.ShoppingListId);
 
@@ -71,12 +72,6 @@ namespace FiscusApi.DataAccess
                 .HasOne<Group>()
                 .WithMany()
                 .HasForeignKey(x => x.GroupId);
-
-            
-            builder.Entity<ShoppingList>()
-                .HasOne<User>()
-                .WithMany()
-                .HasForeignKey(x => x.UserId);
 
             builder.Entity<Item>()
                 .HasKey(x => x.ItemId);
