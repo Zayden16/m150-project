@@ -22,10 +22,10 @@ namespace FiscusApi.Repositories
             using var transaction = _context.Database.BeginTransaction();
             try
             {
-                var entity = _context.Item.FirstOrDefault(x => x.ItemId == item.ItemId);
+                var entity = _context.Item.FirstOrDefault(x => x.Id == item.Id);
 
                 if (entity != null)
-                    throw new Exception($"Entity with id: '{item.ItemId}' already exists.");
+                    throw new Exception($"Entity with id: '{item.Id}' already exists.");
 
                 _context.Item.Add(item);
                 _context.SaveChanges();
@@ -57,7 +57,7 @@ namespace FiscusApi.Repositories
             using var transaction = _context.Database.BeginTransaction();
             try
             {
-                var entity = _context.Item.FirstOrDefault(t => t.ItemId == id);
+                var entity = _context.Item.FirstOrDefault(t => t.Id == id);
 
                 if (entity == null)
                     throw new Exception($"Entity with {id} not found.");
@@ -74,7 +74,7 @@ namespace FiscusApi.Repositories
 
         public Item GetItemSingleRecord(int id)
         {
-            return _context.Item.FirstOrDefault(t => t.ItemId == id);
+            return _context.Item.FirstOrDefault(t => t.Id == id);
         }
 
         public List<Item> GetItemRecords()

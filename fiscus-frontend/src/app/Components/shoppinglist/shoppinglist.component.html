@@ -1,0 +1,10 @@
+<p-orderList [value]="items">
+  <ng-template let-item pTemplate="item">
+    <div>
+      <div>{{item.Id}}</div>
+      <div>{{item.Name}}</div>
+      <div>{{item.Quantity}}</div>
+      <div>{{item.IsPurchased}}</div>
+    </div>
+  </ng-template>
+</p-orderList>

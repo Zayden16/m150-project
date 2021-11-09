@@ -74,7 +74,7 @@ namespace FiscusApi.DataAccess
                 .HasForeignKey(x => x.GroupId);
 
             builder.Entity<Item>()
-                .HasKey(x => x.ItemId);
+                .HasKey(x => x.Id);
 
             builder.Entity<Item>()
                 .HasOne<ShoppingList>()

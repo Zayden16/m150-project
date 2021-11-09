@@ -4,7 +4,7 @@ namespace FiscusApi.Models
 {
     public class Item
     {
-        public int ItemId { get; set; }
+        public int Id { get; set; }
 
         [MaxLength(50)]
         public string Name { get; set; }
