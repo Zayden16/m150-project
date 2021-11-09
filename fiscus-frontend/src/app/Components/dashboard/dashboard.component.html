@@ -1,0 +1,17 @@
+<div class="flex flex-row container">
+    <div class="card flex flex-column p-4 m-6">
+        <h1>Costs</h1>
+        <p-chart type="line" [data]="costData" [options]="chartOptions"></p-chart>
+        <p>Total costs on your name</p>
+    </div>
+    <div class="card flex flex-column p-4 m-6">
+        <h1>Categories</h1>
+        <p-chart type="pie" [data]="categoryData" [options]="chartOptions"></p-chart>
+        <p>Breakdown of Categories</p>
+    </div>
+    <div class="card flex flex-column p-4 m-6">
+        <h1>Debts</h1>
+        <p-chart type="line" [data]="costData" [options]="chartOptions"></p-chart>
+        <p>How much you owe others</p>
+    </div>
+</div>
