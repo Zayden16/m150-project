@@ -25,7 +25,7 @@ export function playerFactory() {
   declarations: [
     AppComponent,
     LoginComponent,
-    PanelmenuComponent
+    PanelmenuComponent,
     DashboardComponent
   ],
   imports: [
@@ -36,7 +36,7 @@ export function playerFactory() {
     ButtonModule,
     InputTextModule,
     LottieModule.forRoot({ player: playerFactory }),
-    ChartModule
+    ChartModule,
     PanelMenuModule,
     LottieModule.forRoot({ player: playerFactory })
   ],
