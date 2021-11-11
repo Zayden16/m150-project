@@ -22,7 +22,7 @@ namespace FiscusApi.Controllers
         public AuthenticationController(IUserRepository userRepository, IOptions<AppSettings> appSettings)
         {
             _appSettings = appSettings.Value;
-            _users = userRepository.GetUserRecords();
+            _users = userRepository.GetUsers();
         }
 
         [HttpPost]

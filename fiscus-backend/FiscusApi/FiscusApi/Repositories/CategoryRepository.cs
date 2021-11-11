@@ -7,35 +7,36 @@ using FiscusApi.Repositories.Interface;
 
 namespace FiscusApi.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class CategoryRepository : ICategoryRepository
     {
         private readonly SqlContext _context;
 
-        public UserRepository(SqlContext context)
+        public CategoryRepository(SqlContext context)
         {
             _context = context;
         }
 
-        public List<User> GetUsers()
+        public List<Category> GetCategories()
         {
-            return _context.User.ToList();
+            return _context.Category.ToList();
         }
 
-        public User GetUser(int id)
+        public Category GetCategory(int id)
         {
-            return _context.User.FirstOrDefault(t => t.UserId == id);
+            return _context.Category.FirstOrDefault(t => t.CategoryId == id);
         }
 
-        public void AddUser(User user)
+        public void AddCategory(Category category)
         {
             using var transaction = _context.Database.BeginTransaction();
             try
             {
-                var entity = _context.User.FirstOrDefault(x => x.UserId == user.UserId);
+                var entity = _context.Category.FirstOrDefault(x => x.CategoryId == category.CategoryId);
+
                 if (entity != null)
-                    throw new Exception($"Entity with id: '{user.UserId}' already exists.");
+                    throw new Exception($"Entity with id: '{category.CategoryId}' already exists.");
 
-                _context.User.Add(user);
+                _context.Category.Add(category);
                 _context.SaveChanges();
                 transaction.Commit();
             }
@@ -45,12 +46,12 @@ namespace FiscusApi.Repositories
             }
         }
 
-        public void UpdateUser(User user)
+        public void UpdateCategory(Category category)
         {
             using var transaction = _context.Database.BeginTransaction();
             try
             {
-                _context.User.Update(user);
+                _context.Category.Update(category);
                 _context.SaveChanges();
                 transaction.Commit();
             }
@@ -60,16 +61,17 @@ namespace FiscusApi.Repositories
             }
         }
 
-        public void DeleteUser(int id)
+        public void DeleteCategory(int id)
         {
             using var transaction = _context.Database.BeginTransaction();
             try
             {
-                var entity = _context.User.FirstOrDefault(u => u.UserId == id);
+                var entity = _context.Category.FirstOrDefault(t => t.CategoryId == id);
 
-                if (entity != null) 
-                    _context.User.Remove(entity);
+                if (entity == null)
+                    throw new Exception($"Entity with {id} not found.");
 
+                _context.Category.Remove(entity);
                 _context.SaveChanges();
                 transaction.Commit();
             }

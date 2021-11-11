@@ -7,35 +7,36 @@ using FiscusApi.Repositories.Interface;
 
 namespace FiscusApi.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class CostRepository : ICostRepository
     {
         private readonly SqlContext _context;
 
-        public UserRepository(SqlContext context)
+        public CostRepository(SqlContext context)
         {
             _context = context;
         }
 
-        public List<User> GetUsers()
+        public IEnumerable<Cost> GetCosts()
         {
-            return _context.User.ToList();
+            return _context.Cost.ToList();
         }
 
-        public User GetUser(int id)
+        public Cost GetCost(int id)
         {
-            return _context.User.FirstOrDefault(t => t.UserId == id);
+            return _context.Cost.FirstOrDefault(x => x.CostId == id);
         }
 
-        public void AddUser(User user)
+        public void AddCost(Cost cost)
         {
             using var transaction = _context.Database.BeginTransaction();
             try
             {
-                var entity = _context.User.FirstOrDefault(x => x.UserId == user.UserId);
+                var entity = _context.Cost.FirstOrDefault(x => x.CostId == cost.CostId);
+
                 if (entity != null)
-                    throw new Exception($"Entity with id: '{user.UserId}' already exists.");
+                    throw new Exception($"Entity with id: '{cost.CostId}' already exists.");
 
-                _context.User.Add(user);
+                _context.Cost.Add(cost);
                 _context.SaveChanges();
                 transaction.Commit();
             }
@@ -45,12 +46,12 @@ namespace FiscusApi.Repositories
             }
         }
 
-        public void UpdateUser(User user)
+        public void UpdateCost(Cost cost)
         {
             using var transaction = _context.Database.BeginTransaction();
             try
             {
-                _context.User.Update(user);
+                _context.Cost.Update(cost);
                 _context.SaveChanges();
                 transaction.Commit();
             }
@@ -60,16 +61,17 @@ namespace FiscusApi.Repositories
             }
         }
 
-        public void DeleteUser(int id)
+        public void DeleteCost(int id)
         {
             using var transaction = _context.Database.BeginTransaction();
             try
             {
-                var entity = _context.User.FirstOrDefault(u => u.UserId == id);
+                var entity = _context.Cost.FirstOrDefault(t => t.CostId == id);
 
-                if (entity != null) 
-                    _context.User.Remove(entity);
+                if (entity == null)
+                    throw new Exception($"Entity with {id} not found.");
 
+                _context.Cost.Remove(entity);
                 _context.SaveChanges();
                 transaction.Commit();
             }

@@ -29,7 +29,12 @@ namespace FiscusApi
             services.AddCors();
             services.AddDbContext<SqlContext>(options => options.UseNpgsql(Configuration["ConnectionString"]));
 
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ICostRepository, CostRepository>();
+            services.AddScoped<IGroupRepository, GroupRepository>();
             services.AddScoped<IItemRepository, ItemRepository>();
+            services.AddScoped<IPaymentRepository, PaymentRepository>();
+            services.AddScoped<IShoppingListRepository, ShoppingListRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddSwaggerGen(c =>
@@ -82,7 +87,7 @@ namespace FiscusApi
             app.UseCors(x => x
                 .AllowAnyMethod()
                 .AllowAnyHeader()
-                .SetIsOriginAllowed(origin => true) // allow any origin
+                .SetIsOriginAllowed(_ => true) // allow any origin
                 .AllowCredentials()); // allow credentials
 
             app.UseMiddleware<JwtMiddleware>();
