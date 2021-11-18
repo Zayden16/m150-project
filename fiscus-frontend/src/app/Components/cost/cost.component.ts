@@ -9,47 +9,35 @@ import { TableModule } from 'primeng/table';
   styleUrls: ['./cost.component.scss']
 })
 export class CostComponent implements OnInit {
-  costs: Cost[] = [
-    {
-      id: '1',
-      description: '3 Brote',
-      date: '18.08.20',
-      category: 'Essen',
-      price: '12.95'
-    },
-    {
-      id: '2',
-      description: '3 Kasten Bier',
-      date: '20.09.20',
-      category: 'Trinken',
-      price: '37.65'
-    }
-  ];
+  costs: Cost[] = [];
 
   clonedCosts: { [s: string]: Cost; } = {};
 
   constructor(private costService: CostService) { }
 
-  ngOnInit(): void {
-    // this.costs = await this.costService.getAllCostsPerGroup(this.authService.currentUserValue.id);
+  async ngOnInit(): Promise<void> {
+    this.costs = await this.costService.getAllCostsPerGroup('egal');
   }
 
-  onRowEditInit(cost: Cost) {
+  onRowEditInit(cost: Cost): void {
     this.clonedCosts[cost.id] = {...cost};
   }
 
-  onRowEditSave(cost: Cost) {
-    // if (cost.price > 0) {
-    //   delete this.clonedProducts[cost.id];
-    //   this.messageService.add({severity:'success', summary: 'Success', detail:'Product is updated'});
-    // }
-    // else {
-    //   this.messageService.add({severity:'error', summary: 'Error', detail:'Invalid Price'});
-    // }
+  async onRowEditSave(cost: Cost): Promise<void> {
+    if (this.validate(cost)) {
+      await this.costService.updateCost(cost);
+      alert(`Cost updated successfully!`);
+    } else {
+      alert(`Error while updating cost!`);
+    }
   }
 
-  onRowEditCancel(cost: Cost, index: number) {
+  onRowEditCancel(cost: Cost, index: number): void {
     this.costs[index] = this.clonedCosts[cost.id];
     delete this.clonedCosts[cost.id];
+  }
+
+  validate(cost: Cost): boolean {
+    return true;
   }
 }

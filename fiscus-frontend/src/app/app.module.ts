@@ -8,10 +8,10 @@ import {LoginComponent} from './Components/login/login.component';
 import {CardModule} from "primeng/card";
 import {ButtonModule} from "primeng/button";
 import {InputTextModule} from "primeng/inputtext";
+import {FormsModule}    from '@angular/forms';
+import {TableModule} from 'primeng/table';
 import {ChartModule} from 'primeng/chart';
 import {PanelMenuModule} from 'primeng/panelmenu';
-
-
 import {LottieModule} from "ngx-lottie";
 import player from 'lottie-web';
 import { PanelmenuComponent } from './Components/panelmenu/panelmenu.component';
@@ -25,6 +25,7 @@ export function playerFactory() {
   declarations: [
     AppComponent,
     LoginComponent,
+    CostComponent
     PanelmenuComponent,
     DashboardComponent
   ],
@@ -35,6 +36,9 @@ export function playerFactory() {
     CardModule,
     ButtonModule,
     InputTextModule,
+    FormsModule,
+    TableModule,
+    HttpClientModule,
     LottieModule.forRoot({ player: playerFactory }),
     ChartModule,
     PanelMenuModule,
