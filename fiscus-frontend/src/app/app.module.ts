@@ -17,6 +17,7 @@ import player from 'lottie-web';
 import { PanelmenuComponent } from './Components/panelmenu/panelmenu.component';
 
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { CreateGroupComponent } from './Components/create-group/create-group.component';
 
 export function playerFactory() {
   return player;
@@ -26,7 +27,8 @@ export function playerFactory() {
     AppComponent,
     LoginComponent,
     PanelmenuComponent,
-    DashboardComponent
+    DashboardComponent,
+    CreateGroupComponent
   ],
   imports: [
     BrowserModule,

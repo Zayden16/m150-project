@@ -15,6 +15,7 @@ export class PanelmenuComponent implements OnInit {
       {
         label: 'Dashboard',
         icon: 'pi pi-fw pi-home',
+        routerLink: 'dashboard'
       },
       {
         label: 'Groups',
@@ -31,7 +32,8 @@ export class PanelmenuComponent implements OnInit {
           },
           {
             label: 'New Group',
-            icon: 'pi pi-fw pi-plus'
+            icon: 'pi pi-fw pi-plus',
+            routerLink: 'group/create'
           }
         ]
       },
