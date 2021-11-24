@@ -25,6 +25,7 @@ import {UserService} from "./Services/user.service";
 import {Router} from "@angular/router";
 import {JwtInterceptor} from "./Interceptors/jwt.interceptor";
 import { SettingsComponent } from './Components/settings/settings.component';
+import { CreateGroupComponent } from './Components/create-group/create-group.component';
 
 
 export function playerFactory() {
@@ -37,7 +38,8 @@ export function playerFactory() {
     PanelmenuComponent,
     DashboardComponent,
     UserComponent,
-    SettingsComponent
+    SettingsComponent,
+    CreateGroupComponent
   ],
   imports: [
     BrowserModule,
