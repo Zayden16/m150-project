@@ -6,4 +6,8 @@ import { Injectable } from '@angular/core';
 export class GroupService {
 
   constructor() { }
+
+  createGroup(groupName: string, groupDescription: string) {
+    throw new Error('Method not implemented.');
+  }
 }
