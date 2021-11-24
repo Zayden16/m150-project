@@ -24,6 +24,7 @@ import {JwtInterceptor} from "./Interceptors/jwt.interceptor";
 import {SettingsComponent} from './Components/settings/settings.component';
 import {TableModule} from "primeng/table";
 import { CreateGroupComponent } from './Components/create-group/create-group.component';
+import { FormsModule } from '@angular/forms';
 
 
 export function playerFactory() {
@@ -42,6 +43,7 @@ export function playerFactory() {
     CreateGroupComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
