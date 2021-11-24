@@ -18,6 +18,7 @@ import { PanelmenuComponent } from './Components/panelmenu/panelmenu.component';
 
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { CreateGroupComponent } from './Components/create-group/create-group.component';
+import { FormsModule } from '@angular/forms';
 
 export function playerFactory() {
   return player;
@@ -28,9 +29,10 @@ export function playerFactory() {
     LoginComponent,
     PanelmenuComponent,
     DashboardComponent,
-    CreateGroupComponent
+    CreateGroupComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
