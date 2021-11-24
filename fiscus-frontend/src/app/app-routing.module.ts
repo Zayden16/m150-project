@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import { CreateGroupComponent } from './Components/create-group/create-group.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import {LoginComponent} from "./Components/login/login.component";
 import {UserComponent} from "./Components/user/user.component";
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'users', component: UserComponent, canActivate: [AuthGuard] },
   {path: 'dashboard', component: DashboardComponent},
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] }
+  {path: 'group/create', component: CreateGroupComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

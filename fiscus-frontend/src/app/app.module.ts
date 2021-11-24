@@ -23,6 +23,7 @@ import {UserService} from "./Services/user.service";
 import {JwtInterceptor} from "./Interceptors/jwt.interceptor";
 import {SettingsComponent} from './Components/settings/settings.component';
 import {TableModule} from "primeng/table";
+import { CreateGroupComponent } from './Components/create-group/create-group.component';
 
 
 export function playerFactory() {
@@ -37,7 +38,8 @@ export function playerFactory() {
     PanelmenuComponent,
     DashboardComponent,
     UserComponent,
-    SettingsComponent
+    SettingsComponent,
+    CreateGroupComponent
   ],
   imports: [
     BrowserModule,

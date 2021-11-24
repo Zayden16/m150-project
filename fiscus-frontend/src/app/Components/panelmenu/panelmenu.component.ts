@@ -38,7 +38,8 @@ export class PanelmenuComponent implements OnInit {
           },
           {
             label: 'New Group',
-            icon: 'pi pi-fw pi-plus'
+            icon: 'pi pi-fw pi-plus',
+            routerLink: 'group/create'
           }
         ]
       },
