@@ -44,7 +44,8 @@ namespace FiscusApi.Migrations
                     Price = table.Column<float>(type: "real", nullable: false),
                     Description = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
                     Date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    CategoryId = table.Column<int>(type: "integer", nullable: false)
+                    CategoryId = table.Column<int>(type: "integer", nullable: false),
+                    GroupId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,6 +55,12 @@ namespace FiscusApi.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Category",
                         principalColumn: "CategoryId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Cost_Group_GroupId",
+                        column: x => x.GroupId,
+                        principalTable: "Group",
+                        principalColumn: "GroupId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -163,6 +170,11 @@ namespace FiscusApi.Migrations
                 name: "IX_Cost_CategoryId",
                 table: "Cost",
                 column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Cost_GroupId",
+                table: "Cost",
+                column: "GroupId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Item_CategoryId",

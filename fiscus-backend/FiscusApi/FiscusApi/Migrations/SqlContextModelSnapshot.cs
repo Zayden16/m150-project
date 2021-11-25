@@ -51,12 +51,17 @@ namespace FiscusApi.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("character varying(255)");
 
+                    b.Property<int>("GroupId")
+                        .HasColumnType("integer");
+
                     b.Property<float>("Price")
                         .HasColumnType("real");
 
                     b.HasKey("CostId");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("GroupId");
 
                     b.ToTable("Cost");
                 });
@@ -190,6 +195,12 @@ namespace FiscusApi.Migrations
                     b.HasOne("FiscusApi.Models.Category", null)
                         .WithMany()
                         .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FiscusApi.Models.Group", null)
+                        .WithMany()
+                        .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

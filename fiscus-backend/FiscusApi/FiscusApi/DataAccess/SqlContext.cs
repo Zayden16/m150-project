@@ -51,6 +51,11 @@ namespace FiscusApi.DataAccess
                 .WithMany()
                 .HasForeignKey(x => x.CategoryId);
 
+            builder.Entity<Cost>()
+                .HasOne<Group>()
+                .WithMany()
+                .HasForeignKey(x => x.GroupId);
+
             builder.Entity<Payment>()
                 .HasNoKey();
 
@@ -64,7 +69,6 @@ namespace FiscusApi.DataAccess
                 .WithMany()
                 .HasForeignKey(x => x.CostId);
 
-           
             builder.Entity<ShoppingList>()
                 .HasKey(x => x.ShoppingListId);
 
