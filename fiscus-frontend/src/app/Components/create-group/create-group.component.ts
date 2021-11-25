@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageService } from 'primeng/api';
-import { GroupService } from 'src/app/Services/group.service';
 
 @Component({
   selector: 'app-create-group',
@@ -14,7 +12,7 @@ export class CreateGroupComponent implements OnInit {
   username: string = '';
   users: string[] = [];
 
-  constructor(private groupService: GroupService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -30,7 +28,10 @@ export class CreateGroupComponent implements OnInit {
       console.log('No group created!')
     } else {
       console.log('create group....' + this.groupName + this.groupDescription);
-      this.groupService.createGroup(this.groupName, this.groupDescription);
+      //const groupId = this.groupService.createGroup(this.groupName, this.groupDescription);
+      for (const username in this.users) {
+        //this.userService.updateUserGroup(this.groupId, username)
+      }
       this.groupName = '';
       this.groupDescription = '';
     }

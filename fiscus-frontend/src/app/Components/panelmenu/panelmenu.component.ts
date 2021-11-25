@@ -40,7 +40,11 @@ export class PanelmenuComponent implements OnInit {
       {
         label: 'Settings',
         icon: 'pi pi-fw pi-ellipsis-h',
-      }
+      },
+      {
+        label: 'Sign out',
+        icon: 'pi pi-fw pi-sign-out'
+      },
     ];
   }
 
