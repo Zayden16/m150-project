@@ -1,5 +1,6 @@
 fiscus-frontend/node_modules/
 fiscus-backend/FiscusApi/FiscusApi/obj/
+fiscus-backend/FiscusApi/FiscusApi/bin/
 .vs
 fiscus-backend/FiscusApi/.idea/.idea.FiscusApi/.idea/
 fiscus-backend/FiscusApi/FiscusApi/bin
