@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Group } from 'src/app/Models/Group';
 
 @Component({
   selector: 'app-create-group',
@@ -6,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-group.component.scss']
 })
 export class CreateGroupComponent implements OnInit {
-  groupName = '';
-  groupDescription = '';
+  group: Group = {
+    GroupId: 0,
+    Name: '',
+    Description: '',
+  }
   
   username: string = '';
   users: string[] = [];
@@ -24,16 +28,16 @@ export class CreateGroupComponent implements OnInit {
   }
 
   createGroup() {
-    if (this.groupName.length < 1) {
+    if (this.group.Name.length < 1) {
       console.log('No group created!')
     } else {
-      console.log('create group....' + this.groupName + this.groupDescription);
-      //const groupId = this.groupService.createGroup(this.groupName, this.groupDescription);
+      console.log('create group....' + this.group.Name + this.group.Description);
+      //const this.group.GroupId = this.groupService.createGroup(this.groupName, this.groupDescription);
       for (const username in this.users) {
-        //this.userService.updateUserGroup(this.groupId, username)
+        //this.userService.updateUserGroup(this.group.GroupId, username)
       }
-      this.groupName = '';
-      this.groupDescription = '';
+      this.group.Name = '';
+      this.group.Description = '';
     }
   }
 
