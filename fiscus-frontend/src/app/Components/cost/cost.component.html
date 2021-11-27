@@ -36,10 +36,11 @@
                     <td>
                         <p-cellEditor>
                             <ng-template pTemplate="input">
-                                <input pInputText type="text" [(ngModel)]="cost.category" required>
+                                <!-- <input pInputText type="text" [(ngModel)]="cost.category" required> -->
+                                <p-dropdown id="category" [options]="categories" [(ngModel)]="cost.category" optionLabel="name"></p-dropdown>
                             </ng-template>
                             <ng-template pTemplate="output">
-                                {{cost.category}}
+                                {{cost.category.name}}
                             </ng-template>
                         </p-cellEditor>
                     </td>
@@ -62,5 +63,26 @@
             </ng-template>
         </p-table>
     </div>
-    <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded add-button"></button>
+
+    <p-dialog header="add new cost" [(visible)]="displayAddCost" [modal]=true>
+        <form [formGroup]="newCostForm" (ngSubmit)="createCost()">
+            <div class="form">
+                <div class="cost-input">
+                    <label for="description">description</label>
+                    <input type="string" id="description" formControlName="description" [ngClass]="{ 'ng-invalid ng-dirty': submitted && newCostFormControls.description.errors }" [(ngModel)]="newCost.description" pInputText>
+                </div>
+                <div class="cost-input">
+                    <label for="price">price</label>
+                    <input type="string" id="price" formControlName="price" [ngClass]="{ 'ng-invalid ng-dirty': submitted && newCostFormControls.price.errors }" [(ngModel)]="newCost.price" pInputText>
+                </div>
+                <div class="cost-input">
+                    <label for="category">category</label><br>
+                    <p-dropdown id="category" formControlName="category" [options]="categories" [(ngModel)]="newCost.category" optionLabel="name"  [ngClass]="{ 'ng-invalid ng-dirty': submitted && newCostFormControls.category.errors }" ></p-dropdown>
+                </div>
+            </div>
+                
+            <button pButton type="submit" label="add cost" class="p-m-3" icon="pi pi-plus"></button>
+        </form>
+    </p-dialog>
+    <button pButton pRipple type="button" (click)="showAddCost()" icon="pi pi-plus" class="p-button-rounded add-button"></button>
 </div>

@@ -36,14 +36,20 @@ export class CostService {
         id: '1',
         description: '3 Brote',
         date: '18.08.20',
-        category: 'Essen',
+        category: {
+          categoryId: '1',
+          name: 'Grocery'
+        },
         price: '12.95'
       },
       {
         id: '2',
         description: '3 Kasten Bier',
         date: '20.09.20',
-        category: 'Trinken',
+        category: {
+          categoryId: '2',
+          name: 'Bar/Party'
+        },
         price: '37.65'
       }
     ];
@@ -51,6 +57,15 @@ export class CostService {
   }
 
   async updateCost(cost: Cost): Promise<void> {
+    // try {
+
+    //   this.http.put(`http://localhost:8080/cost/${cost}`).toPromise();
+    // } catch (e) {
+
+    // }
+  }
+
+  async createCost(cost: Cost): Promise<void> {
     // try {
 
     //   this.http.put(`http://localhost:8080/cost/${cost}`).toPromise();
