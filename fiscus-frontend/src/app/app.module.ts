@@ -24,6 +24,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {UserService} from "./Services/user.service";
 import {Router} from "@angular/router";
 import {JwtInterceptor} from "./Interceptors/jwt.interceptor";
+import { SettingsComponent } from './Components/settings/settings.component';
 
 
 export function playerFactory() {
@@ -35,7 +36,8 @@ export function playerFactory() {
     LoginComponent,
     PanelmenuComponent,
     DashboardComponent,
-    UserComponent
+    UserComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

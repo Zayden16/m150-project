@@ -7,9 +7,15 @@ html, body{
   margin: 0;
   font-family: 'Roboto Slab', serif;
   color: white;
+  background: #121212;
 }
 
-
+.card{
+  height: 90vh;
+  border-radius: 16px;
+  width: 50vw;
+  background-color: #23272a;
+}
 
 @keyframes float {
   0% {

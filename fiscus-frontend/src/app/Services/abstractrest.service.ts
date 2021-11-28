@@ -12,6 +12,10 @@ export abstract class AbstractrestService<T>{
     return this.http.get(this.endpoint + id) as Observable<T>;
   }
 
+  Create(id: number, item: T): Observable<T> {
+    return this.http.post(this.endpoint + id, item) as Observable<T>;
+  }
+
   Update(id: number, item: T): Observable<T> {
     return this.http.put(this.endpoint + id, item) as Observable<T>;
   }

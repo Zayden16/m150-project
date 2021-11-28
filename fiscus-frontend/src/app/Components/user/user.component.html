@@ -1,19 +1,22 @@
-<div class="flex flex-column justify-content-center pl-6">
-  <div class="card align-content-center">
+<div class="flex flex-row">
+  <div class="card flex flex-column p-4 m-6">
     <h1>User Settings</h1>
+
     <form [formGroup]="userForm" (ngSubmit)="updateUser()">
-    <span class="p-float-label">
-      <input id="username" type="text" pInputText>
-      <label for="username">Username</label>
-    </span>
-    <span class="p-float-label">
-      <input id="email" type="text" pInputText>
-      <label for="email">Email</label>
-    </span>
-    <span class="p-float-label">
-      <input id="password" type="password" pInputText>
-      <label for="password">Password</label>
-    </span>
+      <span class="p-float-label">
+        <input id="username" type="text" pInputText>
+        <label for="username">Username</label>
+      </span>
+
+      <span class="p-float-label">
+        <input id="email" type="text" pInputText>
+        <label for="email">Email</label>
+      </span>
+
+      <span class="p-float-label">
+        <input id="password" type="password" pInputText>
+        <label for="password">Password</label>
+      </span>
     </form>
   </div>
 </div>

@@ -15,10 +15,12 @@ export class PanelmenuComponent implements OnInit {
       {
         label: 'Dashboard',
         icon: 'pi pi-fw pi-home',
+        routerLink: "/dashboard"
       },
       {
         label: 'Shopping List',
-        icon: 'pi pi-fw pi-shopping-cart'
+        icon: 'pi pi-fw pi-shopping-cart',
+        routerLink: "/shopping-list"
       },
       {
         label: 'Groups',
@@ -42,6 +44,7 @@ export class PanelmenuComponent implements OnInit {
       {
         label: 'Settings',
         icon: 'pi pi-fw pi-ellipsis-h',
+        routerLink: "/settings"
       }
     ];
   }
