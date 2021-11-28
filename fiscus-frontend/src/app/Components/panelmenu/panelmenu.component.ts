@@ -17,6 +17,10 @@ export class PanelmenuComponent implements OnInit {
         icon: 'pi pi-fw pi-home',
       },
       {
+        label: 'Shopping List',
+        icon: 'pi pi-fw pi-shopping-cart'
+      },
+      {
         label: 'Groups',
         icon: 'pi pi-fw pi-users',
         items: [

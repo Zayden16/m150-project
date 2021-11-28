@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
   userForm: FormGroup;
   username: string = "";
   password: string = "";
-  error: string = "";
 
   constructor(private router: Router, private authService: AuthService, private formBuilder: FormBuilder, private route: ActivatedRoute) {
     this.userForm = this.formBuilder.group({

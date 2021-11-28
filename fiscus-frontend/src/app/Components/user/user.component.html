@@ -1,5 +1,19 @@
-<p>user works!</p>
-<div *ngFor="let user of users">
-  <p>{{user.username}}</p>
-  <p>{{user.email}}</p>
+<div class="flex flex-column justify-content-center pl-6">
+  <div class="card align-content-center">
+    <h1>User Settings</h1>
+    <form [formGroup]="userForm" (ngSubmit)="updateUser()">
+    <span class="p-float-label">
+      <input id="username" type="text" pInputText>
+      <label for="username">Username</label>
+    </span>
+    <span class="p-float-label">
+      <input id="email" type="text" pInputText>
+      <label for="email">Email</label>
+    </span>
+    <span class="p-float-label">
+      <input id="password" type="password" pInputText>
+      <label for="password">Password</label>
+    </span>
+    </form>
+  </div>
 </div>
