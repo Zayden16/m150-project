@@ -27,6 +27,12 @@ namespace FiscusApi.Controllers
         {
             return _dataAccessProvider.GetCosts();
         }
+        
+        [HttpGet("ByGroupId/{groupId}")]
+        public IEnumerable<Cost> Get(int groupId)
+        {
+            return _dataAccessProvider.GetCostsByGroupId(groupId);
+        }
 
         [HttpGet("{id}")]
         public Cost Details(int id)

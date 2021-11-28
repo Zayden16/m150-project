@@ -17,6 +17,13 @@ namespace FiscusApi.Repositories.Interface
         /// <param name="id">The identifier.</param>
         /// <returns>The cost.</returns>
         Cost GetCost(int id);
+        
+        /// <summary>
+        /// Get Costs by Group Id
+        /// </summary>
+        /// <param name="groupId"></param>
+        /// <returns></returns>
+        IEnumerable<Cost> GetCostsByGroupId(int groupId);
 
         /// <summary>
         /// Adds the cost.

@@ -25,6 +25,11 @@ namespace FiscusApi.Repositories
         {
             return _context.Cost.FirstOrDefault(x => x.CostId == id);
         }
+        
+        public IEnumerable<Cost> GetCostsByGroupId(int groupId)
+        {
+            return _context.Cost.Where(x => x.GroupId == groupId).ToList();
+        }
 
         public void AddCost(Cost cost)
         {
