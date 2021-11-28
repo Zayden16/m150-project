@@ -2,7 +2,7 @@ fiscus-frontend/node_modules/
 fiscus-backend/FiscusApi/FiscusApi/obj/
 .vs
 fiscus-backend/FiscusApi/.idea/.idea.FiscusApi/.idea/
-
+fiscus-backend/FiscusApi/FiscusApi/bin
 # Created by https://www.toptal.com/developers/gitignore/api/csharp
 # Edit at https://www.toptal.com/developers/gitignore?templates=csharp
 
