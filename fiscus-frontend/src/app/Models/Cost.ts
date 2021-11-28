@@ -1,4 +1,4 @@
-export interface Cost{
+export interface Cost {
   CostId: number,
   Price: number,
   Description: string,

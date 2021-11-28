@@ -1,4 +1,4 @@
-export interface Payment{
+export interface Payment {
   PaymentId: number,
   UserId: number,
   IsPayee: boolean,

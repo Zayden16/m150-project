@@ -1,7 +1,8 @@
-export interface User{
-  UserId: number,
-  Username: string,
-  Email: string,
-  Password: string,
-  GroupId: string
+export interface User {
+  userId: number,
+  username: string,
+  email: string,
+  password: string,
+  groupId: string,
+  token: string
 }

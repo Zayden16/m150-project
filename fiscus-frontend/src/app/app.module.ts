@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -17,6 +19,12 @@ import player from 'lottie-web';
 import { PanelmenuComponent } from './Components/panelmenu/panelmenu.component';
 
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { UserComponent } from './Components/user/user.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {UserService} from "./Services/user.service";
+import {Router} from "@angular/router";
+import {JwtInterceptor} from "./Interceptors/jwt.interceptor";
+
 
 export function playerFactory() {
   return player;
@@ -26,21 +34,25 @@ export function playerFactory() {
     AppComponent,
     LoginComponent,
     PanelmenuComponent,
-    DashboardComponent
+    DashboardComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     CardModule,
     ButtonModule,
     InputTextModule,
     LottieModule.forRoot({ player: playerFactory }),
     ChartModule,
+    FormsModule,
+    ReactiveFormsModule,
     PanelMenuModule,
     LottieModule.forRoot({ player: playerFactory })
   ],
-  providers: [],
+  providers: [UserService, {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,5 +1,5 @@
 <div class="flex container">
-  <app-panelmenu>
+  <app-panelmenu *ngIf="router.url != '/login'">
   </app-panelmenu>
   <router-outlet>
   </router-outlet>

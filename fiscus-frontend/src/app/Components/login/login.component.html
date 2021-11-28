@@ -1,5 +1,4 @@
 <div class="flex container">
-
   <div class="background flex align-items-center justify-content-center">
     <img class="hero-logo" src="/assets/logo.svg">
     <ng-lottie class="lottie" height="520px" width="520px" [options]="options" (animationCreated)="animationCreated($event)">    </ng-lottie>
@@ -11,15 +10,20 @@
       <p>Please Login</p>
     </div>
     <div class="flex flex-column">
-      <span class="p-input-icon-left mt-2 cw">
-        <i class="pi pi-user"></i>
-        <input type="text" pInputText class="p-inputtext-lg" placeholder="Username">
-      </span>
-      <span class="p-input-icon-left mt-2 cw">
-        <i class="pi pi-eye-slash"></i>
-        <input type="password" pInputText class="p-inputtext-lg" placeholder="Password">
-      </span>
-      <button pButton class="p-button-lg p-button-primary mt-2 cw" type="button" label="Login"></button>
+      <form [formGroup]="userForm" (ngSubmit)="login()">
+        <div class="mb-3 p-m-2 p-float-label">
+          <input type="text" id="username" formControlName="username" pInputText [(ngModel)]="username" pInputText>
+          <label for="username">Username</label>
+        </div>
+
+        <div class="mb-3 p-m-2 p-float-label">
+          <input type="password" id="password" formControlName="password" pInputText [(ngModel)]="password" pInputText>
+          <label for="password">Password</label>
+        </div>
+
+        <button type="submit" class="login p-button-danger p-button-outlined p-m-2" label="Login" icon="pi pi-chevron-right" pButton></button>
+      </form>
+
     </div>
   </div>
 </div>
