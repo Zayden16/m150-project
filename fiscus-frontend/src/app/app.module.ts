@@ -25,6 +25,7 @@ import {UserService} from "./Services/user.service";
 import {Router} from "@angular/router";
 import {JwtInterceptor} from "./Interceptors/jwt.interceptor";
 import { SettingsComponent } from './Components/settings/settings.component';
+import {TableModule} from "primeng/table";
 
 
 export function playerFactory() {
@@ -47,12 +48,13 @@ export function playerFactory() {
     CardModule,
     ButtonModule,
     InputTextModule,
-    LottieModule.forRoot({ player: playerFactory }),
+    LottieModule.forRoot({player: playerFactory}),
     ChartModule,
     FormsModule,
     ReactiveFormsModule,
     PanelMenuModule,
-    LottieModule.forRoot({ player: playerFactory })
+    LottieModule.forRoot({player: playerFactory}),
+    TableModule
   ],
   providers: [UserService, {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
   bootstrap: [AppComponent]
