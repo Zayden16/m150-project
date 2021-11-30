@@ -16,20 +16,20 @@
                     <td>
                         <p-cellEditor>
                             <ng-template pTemplate="input">
-                                <input pInputText type="text" [(ngModel)]="cost.description">
+                                <input pInputText type="text" [(ngModel)]="cost.Description">
                             </ng-template>
                             <ng-template pTemplate="output">
-                                {{cost.description}}
+                                {{cost.Description}}
                             </ng-template>
                         </p-cellEditor>
                     </td>
                     <td>
                         <p-cellEditor>
                             <ng-template pTemplate="input">
-                                <input pInputText type="text" [(ngModel)]="cost.date" required>
+                                <input pInputText type="text" [(ngModel)]="cost.Date" required>
                             </ng-template>
                             <ng-template pTemplate="output">
-                                {{cost.date}}
+                                {{cost.Date}}
                             </ng-template>
                         </p-cellEditor>
                     </td>
@@ -40,17 +40,17 @@
                                 <p-dropdown id="category" [options]="categories" [(ngModel)]="cost.category" optionLabel="name"></p-dropdown>
                             </ng-template>
                             <ng-template pTemplate="output">
-                                {{cost.category.name}}
+                                {{cost.category.Name}}
                             </ng-template>
                         </p-cellEditor>
                     </td>
                     <td>
                         <p-cellEditor>
                             <ng-template pTemplate="input">
-                                <input pInputText type="text" [(ngModel)]="cost.price" required>
+                                <input pInputText type="text" [(ngModel)]="cost.Price" required>
                             </ng-template>
                             <ng-template pTemplate="output">
-                                {{cost.price}}
+                                {{cost.Price}}
                             </ng-template>
                         </p-cellEditor>
                     </td>
@@ -69,18 +69,18 @@
             <div class="form">
                 <div class="cost-input">
                     <label for="description">description</label>
-                    <input type="string" id="description" formControlName="description" [ngClass]="{ 'ng-invalid ng-dirty': submitted && newCostFormControls.description.errors }" [(ngModel)]="newCost.description" pInputText>
+                    <input type="string" id="description" formControlName="description" [ngClass]="{ 'ng-invalid ng-dirty': submitted && newCostFormControls.description.errors }" [(ngModel)]="newCost.Description" pInputText>
                 </div>
                 <div class="cost-input">
                     <label for="price">price</label>
-                    <input type="string" id="price" formControlName="price" [ngClass]="{ 'ng-invalid ng-dirty': submitted && newCostFormControls.price.errors }" [(ngModel)]="newCost.price" pInputText>
+                    <input type="string" id="price" formControlName="price" [ngClass]="{ 'ng-invalid ng-dirty': submitted && newCostFormControls.price.errors }" [(ngModel)]="newCost.Price" pInputText>
                 </div>
                 <div class="cost-input">
                     <label for="category">category</label><br>
-                    <p-dropdown id="category" formControlName="category" [options]="categories" [(ngModel)]="newCost.category" optionLabel="name"  [ngClass]="{ 'ng-invalid ng-dirty': submitted && newCostFormControls.category.errors }" ></p-dropdown>
+                    <p-dropdown id="category" formControlName="category" [options]="categories" [(ngModel)]="newCost.Category" optionLabel="name"  [ngClass]="{ 'ng-invalid ng-dirty': submitted && newCostFormControls.category.errors }" ></p-dropdown>
                 </div>
             </div>
-                
+
             <button pButton type="submit" label="add cost" class="p-m-3" icon="pi pi-plus"></button>
         </form>
     </p-dialog>

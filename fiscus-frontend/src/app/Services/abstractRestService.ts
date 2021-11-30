@@ -17,8 +17,8 @@ export abstract class AbstractRestService<T> {
     return this.httpClient.post(this.endpoint, item) as Observable<T>;
   }
 
-  Update(id: number, item: T): Observable<T> {
-    return this.httpClient.put(this.endpoint + id, item) as Observable<T>;
+  Update(item: T): Observable<T> {
+    return this.httpClient.put(this.endpoint, item) as Observable<T>;
   }
 
   Delete(id: number): Observable<T> {

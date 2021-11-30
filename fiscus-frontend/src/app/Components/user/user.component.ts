@@ -27,6 +27,6 @@ export class UserComponent implements OnInit {
 
   updateUser() {
     let newUser = this.userForm.value;
-    this.userService.Update(this.User.userId, newUser);
+    this.userService.Update(newUser);
   }
 }
