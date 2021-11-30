@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Group } from 'src/app/Models/Group';
+import { User } from 'src/app/Models/User';
+import { GroupService } from 'src/app/Services/group.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-create-group',
@@ -14,30 +17,29 @@ export class CreateGroupComponent implements OnInit {
   }
   
   username: string = '';
-  users: string[] = [];
+  users: User[] = [];
 
-  constructor() { }
+  constructor(private groupService: GroupService, private userService: UserService) { }
 
   ngOnInit(): void {
   }
 
   addUser() {
-    console.log('add user ' + this.username);
-    this.users.push(this.username);
+    //Optional: Falls user nicht gefunden --> Toastr Message "username not found"
+    this.userService.GetOneByUsername(this.username).subscribe(user => this.users.push(user));
     this.username = '';
   }
 
   createGroup() {
     if (this.group.Name.length < 1) {
+      //Optional: Falls kein Groupname --> Toastr Message "Could not create group. Please insert groupname"
       console.log('No group created!')
     } else {
-      console.log('create group....' + this.group.Name + this.group.Description);
-      //const this.group.GroupId = this.groupService.createGroup(this.groupName, this.groupDescription);
-      for (const username in this.users) {
-        //this.userService.updateUserGroup(this.group.GroupId, username)
+      this.groupService.Create(this.group).subscribe(group => this.group = group);
+      for (const user of this.users) {
+        user.groupId = this.group.GroupId.toString();
+        this.userService.Update(user);
       }
-      this.group.Name = '';
-      this.group.Description = '';
     }
   }
 
