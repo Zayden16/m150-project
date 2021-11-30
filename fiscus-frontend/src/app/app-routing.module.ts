@@ -6,16 +6,15 @@ import {LoginComponent} from "./Components/login/login.component";
 import {UserComponent} from "./Components/user/user.component";
 import {SettingsComponent} from "./Components/settings/settings.component";
 import { AuthGuard } from './guards/auth.guard';
-import {CostComponent} from "./Components/cost/cost.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'users', component: UserComponent, canActivate: [AuthGuard] },
-  {path: 'dashboard', component: DashboardComponent},
-  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] }
-  {path: 'group/create', component: CreateGroupComponent, canActivate: [AuthGuard]},
+  { path: 'dashboard', component: DashboardComponent},
+  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
+  { path: 'group/create', component: CreateGroupComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({
