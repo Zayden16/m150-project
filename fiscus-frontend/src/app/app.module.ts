@@ -7,16 +7,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './Components/login/login.component';
+import {CostComponent} from './Components/cost/cost.component';
 import {CardModule} from "primeng/card";
 import {ButtonModule} from "primeng/button";
 import {InputTextModule} from "primeng/inputtext";
+import {FormsModule, ReactiveFormsModule}    from '@angular/forms';
+import {TableModule} from 'primeng/table';
 import {ChartModule} from 'primeng/chart';
 import {PanelMenuModule} from 'primeng/panelmenu';
-
-
 import {LottieModule} from "ngx-lottie";
 import player from 'lottie-web';
-import { PanelmenuComponent } from './Components/panelmenu/panelmenu.component';
+import { PanelmenuComponent } from './Components/panelmenu/panelmenu.component'; 
+import { HttpClientModule } from '@angular/common/http';
+import {DialogModule} from 'primeng/dialog';
+import {DropdownModule} from 'primeng/dropdown';
 
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { UserComponent } from './Components/user/user.component';
@@ -35,6 +39,7 @@ export function playerFactory() {
   declarations: [
     AppComponent,
     LoginComponent,
+    CostComponent,
     PanelmenuComponent,
     DashboardComponent,
     UserComponent,
@@ -48,13 +53,18 @@ export function playerFactory() {
     CardModule,
     ButtonModule,
     InputTextModule,
-    LottieModule.forRoot({player: playerFactory}),
+    FormsModule,
+    ReactiveFormsModule,
+    DropdownModule,
+    TableModule,
+    HttpClientModule,
+    LottieModule.forRoot({ player: playerFactory }),
     ChartModule,
     FormsModule,
     ReactiveFormsModule,
     PanelMenuModule,
-    LottieModule.forRoot({player: playerFactory}),
-    TableModule
+    DialogModule,
+    LottieModule.forRoot({ player: playerFactory })
   ],
   providers: [UserService, {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
   bootstrap: [AppComponent]

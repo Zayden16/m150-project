@@ -1,0 +1,30 @@
+.container{
+    overflow: hidden;
+}
+
+.background{
+    background-color: #23272a;
+    height: 100vh;
+    // 100 - width dashboard (20)
+    width: 80vw;
+}
+
+.content{
+    width: 100%;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.add-button{
+    position: absolute;
+    right: 7%;
+    bottom: 12%;
+}
+
+.form {
+    width: 80%;
+}
+
+.cost-input{
+    margin: 3%;
+}
