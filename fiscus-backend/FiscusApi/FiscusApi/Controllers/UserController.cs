@@ -28,6 +28,12 @@ namespace FiscusApi.Controllers
             return _dataAccessProvider.GetUsers();
         }
 
+        [HttpGet("ByUsername/{username}")]
+        public User Get(string username)
+        {
+            return _dataAccessProvider.GetUserByUsername(username);
+        }
+
         [HttpGet("{id}")]
         public User Details(int id)
         {

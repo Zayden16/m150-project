@@ -19,6 +19,11 @@ export class PanelmenuComponent implements OnInit {
         routerLink: "/dashboard"
       },
       {
+        label: 'Cost',
+        icon: 'pi pi-fw pi-dollar',
+        routerLink: "/cost"
+      },
+      {
         label: 'Shopping List',
         icon: 'pi pi-fw pi-shopping-cart',
         routerLink: "/shopping-list"

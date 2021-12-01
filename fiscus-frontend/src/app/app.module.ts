@@ -23,9 +23,12 @@ import {UserService} from "./Services/user.service";
 import {JwtInterceptor} from "./Interceptors/jwt.interceptor";
 import {SettingsComponent} from './Components/settings/settings.component';
 import {TableModule} from "primeng/table";
-import { CreateGroupComponent } from './Components/create-group/create-group.component';
-import { GroupService } from './Services/group.service';
-
+import {CreateGroupComponent} from './Components/create-group/create-group.component';
+import {GroupService} from './Services/group.service';
+import {CostService} from './Services/cost.service';
+import {CategoryService} from "./Services/category.service";
+import {ItemService} from "./Services/item.service";
+import {PaymentService} from "./Services/payment.service";
 
 export function playerFactory() {
   return player;
@@ -63,7 +66,7 @@ export function playerFactory() {
     DialogModule,
     LottieModule.forRoot({player: playerFactory})
   ],
-  providers: [UserService, GroupService, {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
+  providers: [UserService, GroupService, CostService, CategoryService, ItemService, PaymentService, {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

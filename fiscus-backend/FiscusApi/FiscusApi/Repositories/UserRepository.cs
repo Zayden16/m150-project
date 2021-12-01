@@ -26,6 +26,11 @@ namespace FiscusApi.Repositories
             return _context.User.FirstOrDefault(t => t.UserId == id);
         }
 
+        public User GetUserByUsername(string username)
+        {
+            return _context.User.FirstOrDefault(t => t.Username == username);
+        }
+
         public void AddUser(User user)
         {
             using var transaction = _context.Database.BeginTransaction();

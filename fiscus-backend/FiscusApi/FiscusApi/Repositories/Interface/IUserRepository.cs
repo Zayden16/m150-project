@@ -19,6 +19,13 @@ namespace FiscusApi.Repositories.Interface
         User GetUser(int id);
 
         /// <summary>
+        /// Gets the user by username.
+        /// </summary>
+        /// <param name="username">The username.</param>
+        /// <returns>The user.</returns>
+        User GetUserByUsername(string username);
+
+        /// <summary>
         /// Adds the user.
         /// </summary>
         /// <param name="user">The user.</param>

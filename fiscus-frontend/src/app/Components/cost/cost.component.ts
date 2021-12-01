@@ -22,6 +22,8 @@ export class CostComponent implements OnInit {
   categories: Category[] = [];
 
   constructor(private costService: CostService, private formBuilder: FormBuilder, private datePipe: DatePipe, private categoryService: CategoryService) {
+    console.log("Test");
+
     this.newCostForm = this.formBuilder.group({
       description: [null, Validators.required],
       price: [null, Validators.required],
