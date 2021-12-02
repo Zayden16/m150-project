@@ -83,5 +83,10 @@ namespace FiscusApi.Repositories
                 throw new Exception(e.Message, e);
             }
         }
+
+        public IEnumerable<User> GetUsersByGroupId(int groupId)
+        {
+            return _context.User.Where(u => u.GroupId == groupId).ToList();
+        }
     }
 }
