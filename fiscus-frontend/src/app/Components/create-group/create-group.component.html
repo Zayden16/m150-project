@@ -9,8 +9,8 @@
   </div>
   <div class="p-col-12 p-md-4">
     <div class="p-inputgroup">
-        <button type="button" pButton pRipple icon="pi pi-plus" (click)="addUser()"></button>      
-        <input type="text" [(ngModel)]="username" pInputText placeholder="Add user by username">   
+        <button type="button" disabled pButton pRipple icon="pi pi-plus" (click)="addUser()"></button>      
+        <input type="text" disabled [(ngModel)]="username" pInputText placeholder="Add user by username">   
     </div>
     <h2>Users</h2>
     <ul class="users">
@@ -21,3 +21,4 @@
 </div>
   <button class="btn" pButton type="button" label="Create" (click)="createGroup()"></button>
 </div>
+<p-toast></p-toast>

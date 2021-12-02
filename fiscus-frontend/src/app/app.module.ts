@@ -29,6 +29,8 @@ import {CostService} from './Services/cost.service';
 import {CategoryService} from "./Services/category.service";
 import {ItemService} from "./Services/item.service";
 import {PaymentService} from "./Services/payment.service";
+import {ToastModule} from 'primeng/toast';
+import {MessageService} from 'primeng/api';
 
 export function playerFactory() {
   return player;
@@ -46,6 +48,7 @@ export function playerFactory() {
     CreateGroupComponent
   ],
   imports: [
+    ToastModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,
@@ -66,7 +69,7 @@ export function playerFactory() {
     DialogModule,
     LottieModule.forRoot({player: playerFactory})
   ],
-  providers: [UserService, GroupService, CostService, CategoryService, ItemService, PaymentService, {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
+  providers: [UserService, GroupService, CostService, CategoryService, ItemService, PaymentService, MessageService, {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

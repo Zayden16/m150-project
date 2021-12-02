@@ -12,7 +12,6 @@ export class UserService extends AbstractRestService<User> {
   }
 
   GetOneByUsername(username: string):  Observable<User> {
-    //Dieser REST Endpoint muss noch erstellt werden
-    return this.httpClient.get<User>(`${AppSettings.BASE_URL}User/byUsername${username}`);
+    return this.httpClient.get<User>(`${AppSettings.BASE_URL}User/byUsername/${username}`);
   }
 }
