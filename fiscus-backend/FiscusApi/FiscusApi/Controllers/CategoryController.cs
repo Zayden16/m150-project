@@ -35,15 +35,15 @@ namespace FiscusApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Category patient)
+        public IActionResult Create([FromBody] Category category)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                _dataAccessProvider.AddCategory(patient);
-                return Ok(patient);
+                _dataAccessProvider.AddCategory(category);
+                return Ok(category);
             }
             catch (Exception exception)
             {
@@ -53,15 +53,15 @@ namespace FiscusApi.Controllers
         }
 
         [HttpPut]
-        public IActionResult Edit([FromBody] Category patient)
+        public IActionResult Edit([FromBody] Category category)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                _dataAccessProvider.UpdateCategory(patient);
-                return Ok(patient);
+                _dataAccessProvider.UpdateCategory(category);
+                return Ok(category);
             }
             catch (Exception exception)
             {
