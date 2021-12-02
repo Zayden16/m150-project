@@ -12,7 +12,7 @@ import {MessageService} from 'primeng/api';
 })
 export class CreateGroupComponent implements OnInit {
   group: Group = {
-    GroupId: 0,
+    groupId: 0,
     Name: '',
     Description: '',
   }
@@ -42,17 +42,19 @@ export class CreateGroupComponent implements OnInit {
       this.messageService.add({severity:'error', summary:'Could not create group', detail:'Make sure that all fields marked with * are filled in'});
     } else {
       this.groupService.Create(this.group).subscribe(group => {
-        console.log('This is the group ' + JSON.stringify(group))        
+        this.group = group;
         for (const user of this.users) {
-          user.groupId = this.group.GroupId.toString();
-          this.userService.Update(user);
+          user.groupId = this.group.groupId;
+          this.userService.Update(user).toPromise();
         }
         this.group = {
-          GroupId: 0,
+          groupId: 0,
           Name: '',
           Description: '',
         };
-        this.messageService.add({severity:'success', summary:'Create Group Successful', detail:`Group has been created.`});
+        this.username = '';
+        this.users = [];
+        this.messageService.add({severity:'success', summary:'Create Group Successful', detail:`Group with Id ${group.groupId} has been created.`});
       });
     }
   }

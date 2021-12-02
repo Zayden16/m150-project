@@ -1,5 +1,5 @@
 export interface Group {
-  GroupId: number,
+  groupId: number,
   Name: string,
   Description: string
 }

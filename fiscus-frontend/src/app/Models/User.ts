@@ -3,6 +3,6 @@ export interface User {
   username: string,
   email: string,
   password: string,
-  groupId: string,
+  groupId: number,
   token: string
 }
