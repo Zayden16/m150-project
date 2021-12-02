@@ -14,4 +14,8 @@ export class UserService extends AbstractRestService<User> {
   GetOneByUsername(username: string):  Observable<User> {
     return this.httpClient.get<User>(`${AppSettings.BASE_URL}User/byUsername/${username}`);
   }
+
+  GetAllByGroup(groupId: number):  Observable<User[]> {
+    return this.httpClient.get<User[]>(`${AppSettings.BASE_URL}User/byGroup/${groupId}`);
+  }
 }

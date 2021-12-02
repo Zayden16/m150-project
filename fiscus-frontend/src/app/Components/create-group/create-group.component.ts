@@ -13,10 +13,10 @@ import {MessageService} from 'primeng/api';
 export class CreateGroupComponent implements OnInit {
   group: Group = {
     groupId: 0,
-    Name: '',
-    Description: '',
+    name: '',
+    description: '',
   }
-  
+
   username: string = '';
   users: User[] = [];
 
@@ -31,14 +31,14 @@ export class CreateGroupComponent implements OnInit {
         this.users.push(user);
       } else {
         this.messageService.add({severity:'error', summary:'Username not found', detail:'Please fill in a user that already exists'});
-      }    
+      }
     });
-   
+
     this.username = '';
   }
 
   createGroup() {
-    if (this.group.Name.length < 1) {
+    if (this.group.name.length < 1) {
       this.messageService.add({severity:'error', summary:'Could not create group', detail:'Make sure that all fields marked with * are filled in'});
     } else {
       this.groupService.Create(this.group).subscribe(group => {
@@ -49,8 +49,8 @@ export class CreateGroupComponent implements OnInit {
         }
         this.group = {
           groupId: 0,
-          Name: '',
-          Description: '',
+          name: '',
+          description: '',
         };
         this.username = '';
         this.users = [];

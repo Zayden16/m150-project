@@ -38,5 +38,4 @@ export class SettingsComponent implements OnInit {
     this.userForm.reset();
     location.reload();
   }
-
 }

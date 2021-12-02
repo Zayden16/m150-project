@@ -1,16 +1,16 @@
 <div class="card flex flex-column p-4 m-6">
   <div class="p-inputgroup input">
     <span class="p-inputgroup-addon"><i class="pi pi-users"></i></span>
-    <input type="text" [(ngModel)]="group.Name" pInputText placeholder="Groupname *" />
+    <input type="text" [(ngModel)]="group.name" pInputText placeholder="Groupname *" />
   </div>
   <div class="p-inputgroup input">
     <span class="p-inputgroup-addon"><i class="pi pi-pencil"></i></span>
-    <input type="text" [(ngModel)]="group.Description" pInputText placeholder="Group description" />
+    <input type="text" [(ngModel)]="group.description" pInputText placeholder="Group description" />
   </div>
   <div class="p-col-12 p-md-4">
     <div class="p-inputgroup">
-        <button type="button" pButton pRipple icon="pi pi-plus" (click)="addUser()"></button>      
-        <input type="text" [(ngModel)]="username" pInputText placeholder="Add user by username">   
+        <button type="button" pButton pRipple icon="pi pi-plus" (click)="addUser()"></button>
+        <input type="text" [(ngModel)]="username" pInputText placeholder="Add user by username">
     </div>
     <h2>Users</h2>
     <ul class="users">

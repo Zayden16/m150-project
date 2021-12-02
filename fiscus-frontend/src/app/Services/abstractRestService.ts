@@ -10,7 +10,7 @@ export abstract class AbstractRestService<T> {
   }
 
   GetOne(id: number): Observable<T> {
-    return this.httpClient.get(this.endpoint + id) as Observable<T>;
+    return this.httpClient.get(this.endpoint + '/' + id) as Observable<T>;
   }
 
   Create(item: T): Observable<T> {

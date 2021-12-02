@@ -16,10 +16,10 @@
                     <td>
                         <p-cellEditor>
                             <ng-template pTemplate="input">
-                                <input pInputText type="text" [(ngModel)]="cost.Description">
+                                <input pInputText type="text" [(ngModel)]="cost.description">
                             </ng-template>
                             <ng-template pTemplate="output">
-                                {{cost.Description}}
+                                {{cost.description}}
                             </ng-template>
                         </p-cellEditor>
                     </td>
@@ -40,7 +40,7 @@
                                 <p-dropdown id="category" [options]="categories" [(ngModel)]="cost.category" optionLabel="name"></p-dropdown>
                             </ng-template>
                             <ng-template pTemplate="output">
-                                {{cost.category.Name}}
+                                {{cost.category.name}}
                             </ng-template>
                         </p-cellEditor>
                     </td>
