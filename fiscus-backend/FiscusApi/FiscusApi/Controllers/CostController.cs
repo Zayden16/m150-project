@@ -4,6 +4,7 @@ using FiscusApi.Helpers;
 using FiscusApi.Models;
 using FiscusApi.Repositories.Interface;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace FiscusApi.Controllers
 {
@@ -49,7 +50,7 @@ namespace FiscusApi.Controllers
                     return BadRequest();
 
                 _dataAccessProvider.AddCost(patient);
-                return Ok();
+                return Ok(patient);
             }
             catch (Exception exception)
             {
@@ -67,7 +68,7 @@ namespace FiscusApi.Controllers
                     return BadRequest();
 
                 _dataAccessProvider.UpdateCost(patient);
-                return Ok();
+                return Ok(patient);
             }
             catch (Exception exception)
             {

@@ -43,7 +43,7 @@ namespace FiscusApi.Controllers
                     return BadRequest();
 
                 _dataAccessProvider.AddCategory(patient);
-                return Ok();
+                return Ok(patient);
             }
             catch (Exception exception)
             {
@@ -61,7 +61,7 @@ namespace FiscusApi.Controllers
                     return BadRequest();
 
                 _dataAccessProvider.UpdateCategory(patient);
-                return Ok();
+                return Ok(patient);
             }
             catch (Exception exception)
             {
