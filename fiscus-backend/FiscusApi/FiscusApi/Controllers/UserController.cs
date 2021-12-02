@@ -33,6 +33,14 @@ namespace FiscusApi.Controllers
         {
             return _dataAccessProvider.GetUserByUsername(username);
         }
+        
+        // get users by group
+        [HttpGet("ByGroup/{groupId}")]
+        public IEnumerable<User> GetByGroup(int groupId)
+        {
+            return _dataAccessProvider.GetUsersByGroupId(groupId);
+        }
+        
 
         [HttpGet("{id}")]
         public User Details(int id)
@@ -41,15 +49,15 @@ namespace FiscusApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] User patient)
+        public IActionResult Create([FromBody] User user)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                _dataAccessProvider.AddUser(patient);
-                return Ok(patient);
+                _dataAccessProvider.AddUser(user);
+                return Ok(user);
             }
             catch (Exception exception)
             {
@@ -59,15 +67,15 @@ namespace FiscusApi.Controllers
         }
 
         [HttpPut]
-        public IActionResult Edit([FromBody] User patient)
+        public IActionResult Edit([FromBody] User user)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                _dataAccessProvider.UpdateUser(patient);
-                return Ok(patient);
+                _dataAccessProvider.UpdateUser(user);
+                return Ok(user);
             }
             catch (Exception exception)
             {

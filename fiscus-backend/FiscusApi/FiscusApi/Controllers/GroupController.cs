@@ -35,15 +35,15 @@ namespace FiscusApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Group patient)
+        public IActionResult Create([FromBody] Group group)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                _dataAccessProvider.AddGroup(patient);
-                return Ok(patient);
+                _dataAccessProvider.AddGroup(group);
+                return Ok(group);
             }
             catch (Exception exception)
             {
@@ -53,15 +53,15 @@ namespace FiscusApi.Controllers
         }
 
         [HttpPut]
-        public IActionResult Edit([FromBody] Group patient)
+        public IActionResult Edit([FromBody] Group group)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                _dataAccessProvider.UpdateGroup(patient);
-                return Ok(patient);
+                _dataAccessProvider.UpdateGroup(group);
+                return Ok(group);
             }
             catch (Exception exception)
             {

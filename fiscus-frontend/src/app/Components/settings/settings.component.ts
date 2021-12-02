@@ -26,7 +26,6 @@ export class SettingsComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = this.authService.currentUserValue;
     this.userService.GetAll().toPromise().then(data => this.users = data);
-
   }
 
   async createUser() {

@@ -11,39 +11,39 @@ namespace FiscusApi.Controllers
     [Route("api/[controller]")]
     public class PaymentController : ControllerBase
     {
-        private readonly IItemRepository _dataAccessProvider;
+        private readonly IPaymentRepository _dataAccessProvider;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ItemController"/> class.
+        /// Initializes a new instance of the <see cref="PaymentController"/> class.
         /// </summary>
         /// <param name="dataAccessProvider">The data access provider.</param>
-        public PaymentController(IItemRepository dataAccessProvider)
+        public PaymentController(IPaymentRepository dataAccessProvider)
         {
             _dataAccessProvider = dataAccessProvider;
         }
 
         [HttpGet]
-        public IEnumerable<Item> Get()
+        public IEnumerable<Payment> Get()
         {
-            return _dataAccessProvider.GetItems();
+            return _dataAccessProvider.GetPayments();
         }
 
         [HttpGet("{id}")]
-        public Item Details(int id)
+        public Payment Details(int id)
         {
-            return _dataAccessProvider.GetItem(id);
+            return _dataAccessProvider.GetPayment(id);
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Item patient)
+        public IActionResult Create([FromBody] Payment payment)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                _dataAccessProvider.AddItem(patient);
-                return Ok(patient);
+                _dataAccessProvider.AddPayment(payment);
+                return Ok(payment);
             }
             catch (Exception exception)
             {
@@ -53,15 +53,15 @@ namespace FiscusApi.Controllers
         }
 
         [HttpPut]
-        public IActionResult Edit([FromBody] Item patient)
+        public IActionResult Edit([FromBody] Payment payment)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                _dataAccessProvider.UpdateItem(patient);
-                return Ok(patient);
+                _dataAccessProvider.UpdatePayment(payment);
+                return Ok(payment);
             }
             catch (Exception exception)
             {
@@ -75,12 +75,12 @@ namespace FiscusApi.Controllers
         {
             try
             {
-                var data = _dataAccessProvider.GetItem(id);
+                var data = _dataAccessProvider.GetPayment(id);
 
                 if (data == null)
                     return NotFound($"Entity with {id} not found.");
 
-                _dataAccessProvider.DeleteItem(id);
+                _dataAccessProvider.DeletePayment(id);
                 return Ok();
             }
             catch (Exception exception)

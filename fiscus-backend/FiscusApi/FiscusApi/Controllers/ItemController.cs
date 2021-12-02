@@ -35,15 +35,15 @@ namespace FiscusApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Item patient)
+        public IActionResult Create([FromBody] Item item)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                _dataAccessProvider.AddItem(patient);
-                return Ok(patient);
+                _dataAccessProvider.AddItem(item);
+                return Ok(item);
             }
             catch (Exception exception)
             {
@@ -53,14 +53,14 @@ namespace FiscusApi.Controllers
         }
 
         [HttpPut]
-        public IActionResult Edit([FromBody] Item patient)
+        public IActionResult Edit([FromBody] Item item)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest();
 
-                _dataAccessProvider.UpdateItem(patient);
+                _dataAccessProvider.UpdateItem(item);
                 return Ok();
             }
             catch (Exception exception)
