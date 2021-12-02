@@ -33,6 +33,14 @@ namespace FiscusApi.Controllers
         {
             return _dataAccessProvider.GetUserByUsername(username);
         }
+        
+        // get users by group
+        [HttpGet("ByGroup/{groupId}")]
+        public IEnumerable<User> GetByGroup(int groupId)
+        {
+            return _dataAccessProvider.GetUsersByGroupId(groupId);
+        }
+        
 
         [HttpGet("{id}")]
         public User Details(int id)

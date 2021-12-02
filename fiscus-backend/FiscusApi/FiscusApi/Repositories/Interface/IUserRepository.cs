@@ -42,5 +42,7 @@ namespace FiscusApi.Repositories.Interface
         /// </summary>
         /// <param name="id">The identifier.</param>
         void DeleteUser(int id);
+
+        IEnumerable<User> GetUsersByGroupId(int groupId);
     }
 }
