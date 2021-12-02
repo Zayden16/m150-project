@@ -7,6 +7,7 @@ import {UserComponent} from "./Components/user/user.component";
 import {SettingsComponent} from "./Components/settings/settings.component";
 import {AuthGuard} from './guards/auth.guard';
 import {CostComponent} from "./Components/cost/cost.component";
+import {GroupComponent} from "./Components/group/group.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'cost', component: CostComponent, canActivate: [AuthGuard]},
   {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
+  {path: 'group', component: GroupComponent, canActivate: [AuthGuard]},
   {path: 'group/create', component: CreateGroupComponent, canActivate: [AuthGuard]},
 ];
 

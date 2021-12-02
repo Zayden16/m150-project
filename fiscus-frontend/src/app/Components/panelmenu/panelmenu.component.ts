@@ -9,7 +9,7 @@ import {AuthService} from "../../Services/auth.service";
 })
 export class PanelmenuComponent implements OnInit {
 
-  items: MenuItem[];
+  items: MenuItem[] = [];
 
   constructor(private authService: AuthService) {
     this.items = [
@@ -29,26 +29,10 @@ export class PanelmenuComponent implements OnInit {
         routerLink: "/shopping-list"
       },
       {
-        label: 'Groups',
+        label: 'Group',
         icon: 'pi pi-fw pi-users',
-        items: [
-          //Temporäre Beispiel-Daten... Hier müssen alle Gruppen des Users geladen werden.
-          {
-            label: 'Group 1',
-            icon: 'pi pi-fw pi-users'
-          },
-          {
-            label: 'Group 2',
-            icon: 'pi pi-fw pi-users'
-          },
-          {
-            label: 'New Group',
-            icon: 'pi pi-fw pi-plus',
-            routerLink: 'group/create'
-          }
-        ]
+        routerLink: '/group'
       },
-
       {
         label: 'Settings',
         icon: 'pi pi-fw pi-ellipsis-h',

@@ -31,6 +31,7 @@ import {ItemService} from "./Services/item.service";
 import {PaymentService} from "./Services/payment.service";
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
+import { GroupComponent } from './Components/group/group.component';
 
 export function playerFactory() {
   return player;
@@ -45,7 +46,8 @@ export function playerFactory() {
     DashboardComponent,
     UserComponent,
     SettingsComponent,
-    CreateGroupComponent
+    CreateGroupComponent,
+    GroupComponent
   ],
   imports: [
     ToastModule,
