@@ -40,6 +40,10 @@ namespace FiscusApi.Repositories
                 if (entity != null)
                     throw new Exception($"Entity with id: '{user.UserId}' already exists.");
 
+                entity = _context.User.FirstOrDefault(x => x.Username == user.Username);
+                if (entity != null)
+                    throw new Exception($"Entity with username: '{user.Username}' already exists.");
+
                 _context.User.Add(user);
                 _context.SaveChanges();
                 transaction.Commit();

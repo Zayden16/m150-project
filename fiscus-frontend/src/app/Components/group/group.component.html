@@ -1,33 +1,36 @@
 <div class="flex flex-row">
   <div class="card flex flex-column p-4 m-6">
     <h1>Group</h1>
-    <p-button pButton label="Create new group" class="mt-2" icon="pi pi-plus" routerLink="/group/create"></p-button>
 
-      <p>Name: {{group.name}}</p>
-      <p>Description: {{group.description}}</p>
+    <p-button pButton label="Create new group" class="mt-2 p-4" icon="pi pi-plus" routerLink="/group/create"></p-button>
 
-      <p-table [value]="groupMembers" [scrollable]="true" [rows]="4" [rowHover]="true" scrollHeight="550px"
-               [lazy]="true" dataKey="Id" editMode="row" styleClass="p-datatable-res mt-5">
+    <div class="mt-4 flex flex-column">
+      <h4>Group info</h4>
+      <span>Name: {{group.name}}</span>
+      <span>Description: {{group.description}}</span>
+    </div>
 
-        <ng-template pTemplate="caption">
-          <span>All group members</span>
-        </ng-template>
-        <ng-template pTemplate="header">
-          <tr>
-            <th>Id</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>GroupId</th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-user>
-          <tr>
-            <td>{{user.userId}}</td>
-            <td>{{user.username}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.groupId}}</td>
-          </tr>
-        </ng-template>
-      </p-table>
+    <p-table [value]="groupMembers" [scrollable]="true" [rows]="4" [rowHover]="true" scrollHeight="550px"
+             [lazy]="true" dataKey="Id" editMode="row" styleClass="p-datatable-res mt-5">
+      <ng-template pTemplate="caption">
+        <span>All group members</span>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Id</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>GroupId</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-user>
+        <tr>
+          <td>{{user.userId}}</td>
+          <td>{{user.username}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.groupId}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
 </div>
