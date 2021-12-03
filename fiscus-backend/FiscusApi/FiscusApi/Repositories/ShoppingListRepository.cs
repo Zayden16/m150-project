@@ -26,6 +26,11 @@ namespace FiscusApi.Repositories
             return _context.ShoppingList.FirstOrDefault(t => t.ShoppingListId == id);
         }
 
+        public ShoppingList GetShoppingListByGroupId(int groupId)
+        {
+            return _context.ShoppingList.FirstOrDefault(t => t.GroupId == groupId);
+        }
+
         public void AddShoppingList(ShoppingList item)
         {
             using var transaction = _context.Database.BeginTransaction();

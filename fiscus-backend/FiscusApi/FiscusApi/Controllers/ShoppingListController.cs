@@ -34,6 +34,12 @@ namespace FiscusApi.Controllers
             return _dataAccessProvider.GetShoppingList(id);
         }
 
+        [HttpGet("ByGroupId/{groupId}")]
+        public ShoppingList GetByGroupId(int groupId)
+        {
+            return _dataAccessProvider.GetShoppingListByGroupId(groupId);
+        }
+
         [HttpPost]
         public IActionResult Create([FromBody] ShoppingList shoppingList)
         {

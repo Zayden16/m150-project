@@ -9,7 +9,14 @@ namespace FiscusApi.Repositories.Interface
         /// Gets the items.
         /// </summary>
         /// <returns>The items.</returns>
-        List<Item> GetItems();  
+        IEnumerable<Item> GetItems();
+
+        /// <summary>
+        /// Gets the items by shopping list identifier.
+        /// </summary>
+        /// <param name="shoppingListId">The shopping list identifier.</param>
+        /// <returns>The items.</returns>
+        IEnumerable<Item> GetItemsByShoppingListId(int shoppingListId);
 
         /// <summary>
         /// Gets the item.

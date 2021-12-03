@@ -31,8 +31,10 @@ import {ItemService} from "./Services/item.service";
 import {PaymentService} from "./Services/payment.service";
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
-import { GroupComponent } from './Components/group/group.component';
-import { ShoppingListComponent } from './Components/shopping-list/shopping-list.component';
+import {GroupComponent} from './Components/group/group.component';
+import {ShoppingListComponent} from './Components/shopping-list/shopping-list.component';
+import {ShoppingListService} from "./Services/shopping-list.service";
+import {CheckboxModule} from "primeng/checkbox";
 
 export function playerFactory() {
   return player;
@@ -71,9 +73,14 @@ export function playerFactory() {
     ReactiveFormsModule,
     PanelMenuModule,
     DialogModule,
-    LottieModule.forRoot({player: playerFactory})
+    LottieModule.forRoot({player: playerFactory}),
+    CheckboxModule
   ],
-  providers: [UserService, GroupService, CostService, CategoryService, ItemService, PaymentService, MessageService, {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
+  providers: [UserService, GroupService, CostService, CategoryService, ItemService, PaymentService, ShoppingListService, MessageService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

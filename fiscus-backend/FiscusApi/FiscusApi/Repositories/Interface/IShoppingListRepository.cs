@@ -19,6 +19,13 @@ namespace FiscusApi.Repositories.Interface
         ShoppingList GetShoppingList(int id);
 
         /// <summary>
+        /// Gets the shopping list by group identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>The shopping list.</returns>
+        ShoppingList GetShoppingListByGroupId(int id);
+
+        /// <summary>
         /// Adds the shopping list.
         /// </summary>
         /// <param name="shoppingList">The shopping list.</param>

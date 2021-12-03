@@ -16,16 +16,20 @@ namespace FiscusApi.Repositories
             _context = context;
         }
 
-        public List<Item> GetItems()
+        public IEnumerable<Item> GetItems()
         {
             return _context.Item.ToList();
+        }
+
+        public IEnumerable<Item> GetItemsByShoppingListId(int shoppingListId)
+        {
+            return _context.Item.Where(x => x.ShoppingListId == shoppingListId);
         }
 
         public Item GetItem(int id)
         {
             return _context.Item.FirstOrDefault(t => t.ItemId == id);
         }
-
 
         public void AddItem(Item item)
         {

@@ -28,6 +28,12 @@ namespace FiscusApi.Controllers
             return _dataAccessProvider.GetItems();
         }
 
+        [HttpGet("ByShoppingListId/{shoppingListId}")]
+        public IEnumerable<Item> Get(int shoppingListId)
+        {
+            return _dataAccessProvider.GetItemsByShoppingListId(shoppingListId);
+        }
+
         [HttpGet("{id}")]
         public Item Details(int id)
         {

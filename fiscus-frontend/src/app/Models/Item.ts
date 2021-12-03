@@ -1,9 +1,9 @@
 export interface Item {
-  ItemId: number,
-  Name: string,
-  Quantity: number,
-  IsPurchased: boolean,
-  ShoppingListId: number,
-  CategoryId: number,
-  UserId: number
+  itemId: number,
+  name: string,
+  quantity: number,
+  isPurchased: boolean,
+  shoppingListId: number,
+  categoryId: number,
+  userId: number
 }
