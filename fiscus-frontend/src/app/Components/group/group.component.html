@@ -1,8 +1,8 @@
 <div class="flex flex-row">
   <div class="card flex flex-column p-4 m-6">
     <h1>Group</h1>
+    <p-button pButton label="Create new group" class="mt-2" icon="pi pi-plus" routerLink="/group/create"></p-button>
 
-    <div>
       <p>Name: {{group.name}}</p>
       <p>Description: {{group.description}}</p>
 
@@ -29,6 +29,5 @@
           </tr>
         </ng-template>
       </p-table>
-    </div>
   </div>
 </div>

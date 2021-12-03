@@ -8,6 +8,7 @@ import {SettingsComponent} from "./Components/settings/settings.component";
 import {AuthGuard} from './guards/auth.guard';
 import {CostComponent} from "./Components/cost/cost.component";
 import {GroupComponent} from "./Components/group/group.component";
+import {ShoppingListComponent} from "./Components/shopping-list/shopping-list.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
   {path: 'group', component: GroupComponent, canActivate: [AuthGuard]},
   {path: 'group/create', component: CreateGroupComponent, canActivate: [AuthGuard]},
+  {path: 'shopping-list', component: ShoppingListComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
