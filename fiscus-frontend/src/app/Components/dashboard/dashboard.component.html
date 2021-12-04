@@ -1,17 +1,23 @@
-<div class="flex flex-row">
-    <div class="card flex flex-column p-4 m-6">
-        <h1>Costs</h1>
-        <p-chart type="line" [data]="costData" [options]="chartOptions"></p-chart>
-        <p>Total costs on your name</p>
+<div class="container flex flex-row align-items-center justify-content-center">
+  <div class="card">
+    <h1 class="card-heading">Costs</h1>
+    <div class="card-chart">
+      <p-chart [data]="costData" [options]="chartOptions" type="line"></p-chart>
     </div>
-    <div class="card flex flex-column p-4 m-6">
-        <h1>Categories</h1>
-        <p-chart type="pie" [data]="categoryData" [options]="chartOptions"></p-chart>
-        <p>Breakdown of Categories</p>
+    <div class="card-desc">Sum of costs made by you</div>
+  </div>
+  <div class="card">
+    <h1 class="card-heading">Debts</h1>
+    <div class="card-chart">
+      <p-chart [data]="costData" [options]="chartOptions" type="line"></p-chart>
     </div>
-    <div class="card flex flex-column p-4 m-6">
-        <h1>Debts</h1>
-        <p-chart type="line" [data]="costData" [options]="chartOptions"></p-chart>
-        <p>How much you owe others</p>
+    <div class="card-desc">Sum of your Debts</div>
+  </div>
+  <div class="card">
+    <h1 class="card-heading">Categories</h1>
+    <div class="card-chart">
+      <p-chart [data]="categoryData" [options]="chartOptions" type="pie"></p-chart>
     </div>
+    <div class="card-desc">% of Costs by Category by you</div>
+  </div>
 </div>
