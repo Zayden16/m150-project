@@ -13,7 +13,7 @@ export abstract class AbstractRestService<T> {
     return this.httpClient.get(this.endpoint + '/' + id) as Observable<T>;
   }
 
-  Create(item: T): Observable<T> {
+  Create(item: T): Observable<T> {   
     return this.httpClient.post(this.endpoint, item) as Observable<T>;
   }
 
@@ -22,6 +22,6 @@ export abstract class AbstractRestService<T> {
   }
 
   Delete(id: number): Observable<T> {
-    return this.httpClient.delete(this.endpoint + id) as Observable<T>;
+    return this.httpClient.delete(this.endpoint + "/" + id) as Observable<T>;
   }
 }
